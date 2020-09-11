@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>理解Promise原理 | 熊大的理想家</title>
+    <meta name="description" content="https://www.ecma-international.org/ecma-262/6.0/#sec-promise-objects">
+    <meta name="generator" content="VuePress 1.3.1">
+    <link rel="icon" href="/icons/favicon.ico">
+    
+    <link rel="preload" href="/assets/css/0.styles.50f4f214.css" as="style"><link rel="preload" href="/assets/js/app.31ad6def.js" as="script"><link rel="preload" href="/assets/js/2.402b875a.js" as="script"><link rel="preload" href="/assets/js/14.ede9207e.js" as="script"><link rel="prefetch" href="/assets/js/10.a5c60306.js"><link rel="prefetch" href="/assets/js/11.162fe585.js"><link rel="prefetch" href="/assets/js/12.c63bb013.js"><link rel="prefetch" href="/assets/js/13.5535dce1.js"><link rel="prefetch" href="/assets/js/15.64525aa8.js"><link rel="prefetch" href="/assets/js/16.4c4f43ef.js"><link rel="prefetch" href="/assets/js/17.02620db2.js"><link rel="prefetch" href="/assets/js/18.ed2442f6.js"><link rel="prefetch" href="/assets/js/19.60103380.js"><link rel="prefetch" href="/assets/js/20.eeb4dec5.js"><link rel="prefetch" href="/assets/js/21.6ccd03aa.js"><link rel="prefetch" href="/assets/js/22.9712c3da.js"><link rel="prefetch" href="/assets/js/23.427bd783.js"><link rel="prefetch" href="/assets/js/24.806f7b5e.js"><link rel="prefetch" href="/assets/js/25.92bf1841.js"><link rel="prefetch" href="/assets/js/26.022d29b9.js"><link rel="prefetch" href="/assets/js/27.ea494720.js"><link rel="prefetch" href="/assets/js/28.2a4b77c4.js"><link rel="prefetch" href="/assets/js/29.f104b0e7.js"><link rel="prefetch" href="/assets/js/3.2692bef8.js"><link rel="prefetch" href="/assets/js/30.d1441ead.js"><link rel="prefetch" href="/assets/js/31.1bd3dd67.js"><link rel="prefetch" href="/assets/js/32.86fc5bd8.js"><link rel="prefetch" href="/assets/js/33.4066404f.js"><link rel="prefetch" href="/assets/js/34.f8b971f6.js"><link rel="prefetch" href="/assets/js/35.2039d596.js"><link rel="prefetch" href="/assets/js/36.28c245a2.js"><link rel="prefetch" href="/assets/js/37.4542ca60.js"><link rel="prefetch" href="/assets/js/38.7060884d.js"><link rel="prefetch" href="/assets/js/39.cbf6e3b3.js"><link rel="prefetch" href="/assets/js/4.683aec4b.js"><link rel="prefetch" href="/assets/js/40.b86f780d.js"><link rel="prefetch" href="/assets/js/41.cbec82e6.js"><link rel="prefetch" href="/assets/js/42.883c94fb.js"><link rel="prefetch" href="/assets/js/43.dded0337.js"><link rel="prefetch" href="/assets/js/44.73d72a16.js"><link rel="prefetch" href="/assets/js/45.ae66d107.js"><link rel="prefetch" href="/assets/js/46.7cbcd7cc.js"><link rel="prefetch" href="/assets/js/47.04493fe4.js"><link rel="prefetch" href="/assets/js/48.00e8b6f3.js"><link rel="prefetch" href="/assets/js/49.3ea416c2.js"><link rel="prefetch" href="/assets/js/5.bf679834.js"><link rel="prefetch" href="/assets/js/50.cc6c6fc9.js"><link rel="prefetch" href="/assets/js/51.78318d8f.js"><link rel="prefetch" href="/assets/js/52.6b9545d5.js"><link rel="prefetch" href="/assets/js/53.9ba62439.js"><link rel="prefetch" href="/assets/js/54.61bea3dd.js"><link rel="prefetch" href="/assets/js/55.bda3ef3f.js"><link rel="prefetch" href="/assets/js/56.c28dd041.js"><link rel="prefetch" href="/assets/js/57.ac593a27.js"><link rel="prefetch" href="/assets/js/58.1078c8f7.js"><link rel="prefetch" href="/assets/js/59.5a253692.js"><link rel="prefetch" href="/assets/js/6.5cab89aa.js"><link rel="prefetch" href="/assets/js/60.d4504388.js"><link rel="prefetch" href="/assets/js/61.1bd9047b.js"><link rel="prefetch" href="/assets/js/62.4a1cf18a.js"><link rel="prefetch" href="/assets/js/63.20f83cdd.js"><link rel="prefetch" href="/assets/js/64.e3d5f47f.js"><link rel="prefetch" href="/assets/js/65.d91b0f58.js"><link rel="prefetch" href="/assets/js/66.695a35f4.js"><link rel="prefetch" href="/assets/js/67.28168e14.js"><link rel="prefetch" href="/assets/js/68.05b3ca2c.js"><link rel="prefetch" href="/assets/js/69.16017d6e.js"><link rel="prefetch" href="/assets/js/7.2f5682ad.js"><link rel="prefetch" href="/assets/js/70.46eeee02.js"><link rel="prefetch" href="/assets/js/71.8564bd97.js"><link rel="prefetch" href="/assets/js/72.7a6b963c.js"><link rel="prefetch" href="/assets/js/73.74f6e720.js"><link rel="prefetch" href="/assets/js/74.2df8cd5a.js"><link rel="prefetch" href="/assets/js/75.4dad2391.js"><link rel="prefetch" href="/assets/js/76.fdb6bdac.js"><link rel="prefetch" href="/assets/js/77.7fec9d99.js"><link rel="prefetch" href="/assets/js/78.672abc99.js"><link rel="prefetch" href="/assets/js/79.5f85bd87.js"><link rel="prefetch" href="/assets/js/8.c99a06ba.js"><link rel="prefetch" href="/assets/js/80.bd894c75.js"><link rel="prefetch" href="/assets/js/81.6f1adf51.js"><link rel="prefetch" href="/assets/js/82.cc0a99a4.js"><link rel="prefetch" href="/assets/js/9.e2c266a1.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.50f4f214.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">熊大的理想家</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客" class="dropdown-title"><span class="title">博客</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/" class="nav-link router-link-active">
+  blog
+</a></li><li class="dropdown-item"><!----> <a href="/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/html/" class="nav-link">
+  html
+</a></li><li class="dropdown-item"><!----> <a href="/ms/" class="nav-link">
+  ms
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="参考" class="dropdown-title"><span class="title">参考</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://www.h5anli.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  H5案例
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="/blog/.html" class="nav-link">
+  vue-weibo
+</a></li><li class="dropdown-item"><!----> <a href="/blog/.html" class="nav-link">
+  vue-cms
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/maxiong88/email-koa-webpack-phantom" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  koa-email
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="/site/q-site.html" class="nav-link">
+  优质站点
+</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  MEME
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客" class="dropdown-title"><span class="title">博客</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/" class="nav-link router-link-active">
+  blog
+</a></li><li class="dropdown-item"><!----> <a href="/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/html/" class="nav-link">
+  html
+</a></li><li class="dropdown-item"><!----> <a href="/ms/" class="nav-link">
+  ms
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="参考" class="dropdown-title"><span class="title">参考</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://www.h5anli.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  H5案例
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="/blog/.html" class="nav-link">
+  vue-weibo
+</a></li><li class="dropdown-item"><!----> <a href="/blog/.html" class="nav-link">
+  vue-cms
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/maxiong88/email-koa-webpack-phantom" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  koa-email
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="/site/q-site.html" class="nav-link">
+  优质站点
+</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  MEME
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>理解Promise原理</span> <!----></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h3 id="面试常题"><a href="#面试常题" class="header-anchor">#</a> 面试常题</h3> <ul><li><p>了解Promise吗</p> <ul><li>Promise单词翻译：许诺，希望，期望</li> <li>Promise是一个对象</li> <li>Promise/A+ 表示异步操作的最终结果（完成/失败）</li> <li>ECMAscript 规范定义为延时或异步计算最终结果的占位符</li> <li>有三种状态：<code>fulfilled</code>、<code>rejected</code>、<code>pending</code>，每个状态只能改变一次（不可逆的）</li></ul></li> <li><p>Promise解决了什么？</p> <ul><li>代码简洁
+<ul><li>Promise的链式调用解决了 函数无止境地狱回调( 嵌套调用)</li> <li>可以帮助您自然地处理错误，简化了<code>try{}catch(e){}</code></li> <li>处理多个异步请求并发</li></ul></li> <li>在nodejs与浏览器中都可以使用</li> <li>是异步编程的一种解决方案：Promise.all、Promise.race等</li></ul></li> <li><p>Promise 事件循环、手写Promise</p> <ul><li>单独下面说</li></ul></li></ul> <h3 id="promise内部结构"><a href="#promise内部结构" class="header-anchor">#</a> Promise内部结构</h3> <h4 id="promise构造函数"><a href="#promise构造函数" class="header-anchor">#</a> Promise构造函数</h4> <p>constructor[构造方法] 是Promise构造函数的内部对象和全局对象的Promise属性的初始值
+只能当作构造函数调用，他创建并初始化一个新的Promise对象；否则抛出异常</p> <ul><li>Promise ( executor )
+<ul><li>executor 如果不是函数，抛出类型错误 <code>Uncaught TypeError: Promise resolver undefined is not a function</code></li> <li>定义promise属性[[PromiseState]]设置值为pending</li> <li>执行executor</li> <li>返回promise</li></ul></li></ul> <h4 id="promise参数-executor"><a href="#promise参数-executor" class="header-anchor">#</a> Promise参数-executor</h4> <p>executor是带有 resolve 和 reject 两个参数的函数 。Promise构造函数执行时立即调用executor 函数， resolve 和 reject 两个函数作为参数传递给executor（executor 函数在Promise构造函数返回所建promise实例对象前被调用）。resolve 和 reject 函数被调用时，分别将promise的状态改为fulfilled（完成）或rejected（失败）。executor 内部通常会执行一些异步操作，一旦异步操作执行完毕(可能成功/失败)，要么调用resolve函数来将promise状态改成fulfilled，要么调用reject 函数将promise的状态改为rejected。如果在executor函数中抛出一个错误，那么该promise 状态为rejected。executor函数的返回值被忽略。</p> <h4 id="promise的方法"><a href="#promise的方法" class="header-anchor">#</a> Promise的方法</h4> <ul><li>Promise.all(iterable)
+<ul><li>这个方法返回一个新的promise对象，该promise对象在iterable参数对象里所有的promise对象都成功的时候才会触发成功，一旦有任何一个iterable里面的promise对象失败则立即触发该promise对象的失败。这个新的promise对象在触发成功状态以后，会把一个包含iterable里所有promise返回值的数组作为成功回调的返回值，顺序跟iterable的顺序保持一致；如果这个新的promise对象触发了失败状态，它会把iterable里第一个触发失败的promise对象的错误信息作为它的失败错误信息。Promise.all方法常被用于处理多个promise对象的状态集合</li></ul></li> <li>Promise.prototype
+<ul><li>返回被创建的实例函数.  默认为 Promise 函数.</li></ul></li> <li>Promise.race(iterable)
+<ul><li>当iterable参数里的任意一个子promise被成功或失败后，父promise马上也会用子promise的成功返回值或失败详情作为参数调用父promise绑定的相应句柄，并返回该promise对象。</li></ul></li> <li>Promise.reject
+<ul><li>返回一个状态为失败的Promise对象，并将给定的失败信息传递给对应的处理方法</li></ul></li> <li>Promise.resolve
+<ul><li>返回一个状态由给定value决定的Promise对象。如果该值是thenable(即，带有then方法的对象)，返回的Promise对象的最终状态由then方法执行决定；否则的话(该value为空，基本类型或者不带then方法的对象),返回的Promise对象状态为fulfilled，并且将该value传递给对应的then方法。通常而言，如果你不知道一个值是否是Promise对象，使用Promise.resolve(value) 来返回一个Promise对象,这样就能将该value以Promise对象形式使用</li></ul></li></ul> <h4 id="promise原型对象的属性"><a href="#promise原型对象的属性" class="header-anchor">#</a> Promise原型对象的属性</h4> <ul><li><p>Promise.prototype.catch ( onRejected )</p> <ul><li>添加一个拒绝(rejection) 回调到当前 promise, 返回一个新的promise。当这个回调函数被调用，新 promise 将以它的返回值来resolve，否则如果当前promise 进入fulfilled状态，则以当前promise的完成结果作为新promise的完成结果.</li></ul></li> <li><p>Promise.prototype.constructor</p> <ul><li>初始值是Promise构造函数</li></ul></li> <li><p>Promise.prototype.finally(onFinally)</p> <ul><li>添加一个事件处理回调于当前promise对象，并且在原promise对象解析完毕后，返回一个新的promise对象。回调会在当前promise运行完毕后被调用，无论当前promise的状态是完成(fulfilled)还是失败(rejected)</li></ul></li> <li><p>Promise.prototype.then(onfulfilled, onrejected)</p> <ul><li>检测当前promise是否是Promise实例(promise instanceof Promise)/IsPromise(promise),如果不是 抛出 throw TypeError</li> <li>通过new运算符，在通过Promise构造函数的constructor(构造方法),创建一个新的promise对象，</li> <li>执行 PerformPromiseThen
+<ul><li>enqueuejob</li> <li>添加解决(fulfillment)和拒绝(rejection)回调到当前 promise,</li></ul></li> <li>返回新的promise对象</li></ul></li> <li><p>Promise.prototype[@@toStringTag]</p> <ul><li>不可写、不可枚举、不可配置</li> <li>是一个内置 symbol ，值：promise</li> <li>Object.prototype.toString.call(new Promise(() =&gt;{})) ===&gt; '[object promise]'</li></ul></li></ul> <h4 id="promise的实例属性"><a href="#promise的实例属性" class="header-anchor">#</a> Promise的实例属性</h4> <p>Promise实例是从Promise原型对象继承属性的普通对象</p> <table><thead><tr><th style="text-align:left;">属性名</th> <th style="text-align:left;">描述</th></tr></thead> <tbody><tr><td style="text-align:left;">[[PromiseState]]</td> <td style="text-align:left;">promise状态；string类型；它控制Promise对其then方法的传入调用的响应方式；值：pending、fulfilled、rejected</td></tr> <tr><td style="text-align:left;">[[PromiseResult]]</td> <td style="text-align:left;">promise结果；fulfilled或rejected的结果值，pending的结果默认undefined</td></tr> <tr><td style="text-align:left;">[[PromiseFulfillReactions]]</td> <td style="text-align:left;">promise fulfill的反应；promise状态变成fulfilled的记录列表</td></tr> <tr><td style="text-align:left;">[[PromiseRejectReactions]]</td> <td style="text-align:left;">promise rejected的反应；状态变成rejected的记录列表</td></tr></tbody></table> <div class="custom-block tip"><p class="custom-block-title">???</p> <p>不管是Promise原型对象上的方法还是Promise函数对象上的方法 ，它们的执行结果都将返回一个Promise对象</p></div> <h4 id="手写-promise-race"><a href="#手写-promise-race" class="header-anchor">#</a> 手写 Promise.race</h4> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 返回第一个成功或者失败的promise对象</span>
+<span class="token keyword">function</span> <span class="token function">race</span> <span class="token punctuation">(</span><span class="token parameter">arr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">let</span> That <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">That</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">let</span> length <span class="token operator">=</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+      <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        That<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">That</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter"><span class="token keyword">null</span><span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token function">reject</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">'必须是数组'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="promise类库"><a href="#promise类库" class="header-anchor">#</a> promise类库</h3> <div class="language-js extra-class"><pre class="language-js"><code>
+<span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">global<span class="token punctuation">,</span> factory</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">typeof</span> exports <span class="token operator">===</span> <span class="token string">'object'</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> module <span class="token operator">!==</span> <span class="token string">'undefined'</span> <span class="token operator">?</span> module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">factory</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span>
+	<span class="token keyword">typeof</span> define <span class="token operator">===</span> <span class="token string">'function'</span> <span class="token operator">&amp;&amp;</span> define<span class="token punctuation">.</span>amd <span class="token operator">?</span> <span class="token function">define</span><span class="token punctuation">(</span>factory<span class="token punctuation">)</span> <span class="token operator">:</span>
+	<span class="token punctuation">(</span>global<span class="token punctuation">.</span>ES6Promise <span class="token operator">=</span> <span class="token function">factory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token string">'use strict'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 判断是否是函数或者对象 除null</span>
+<span class="token keyword">function</span> <span class="token function">objectOrFunction</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> type <span class="token operator">=</span> <span class="token keyword">typeof</span> x<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> x <span class="token operator">!==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>type <span class="token operator">===</span> <span class="token string">'object'</span> <span class="token operator">||</span> type <span class="token operator">===</span> <span class="token string">'function'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 判断是否是函数</span>
+<span class="token keyword">function</span> <span class="token function">isFunction</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">typeof</span> x <span class="token operator">===</span> <span class="token string">'function'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> _isArray <span class="token operator">=</span> <span class="token keyword">void</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>Array<span class="token punctuation">.</span>isArray<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  _isArray <span class="token operator">=</span> Array<span class="token punctuation">.</span>isArray<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">_isArray</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'[object Array]'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 判断是不是数组</span>
+<span class="token keyword">var</span> isArray <span class="token operator">=</span> _isArray<span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> len <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> vertxNext <span class="token operator">=</span> <span class="token keyword">void</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> customSchedulerFn <span class="token operator">=</span> <span class="token keyword">void</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token comment">//==== https://github.com/kriskowal/asap/blob/master/browser-raw.js</span>
+<span class="token keyword">var</span> <span class="token function-variable function">asap</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">asap</span><span class="token punctuation">(</span><span class="token parameter">callback<span class="token punctuation">,</span> arg</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  queue<span class="token punctuation">[</span>len<span class="token punctuation">]</span> <span class="token operator">=</span> callback<span class="token punctuation">;</span>
+  queue<span class="token punctuation">[</span>len <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> arg<span class="token punctuation">;</span>
+  len <span class="token operator">+=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>len <span class="token operator">===</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// If len is 2, that means that we need to schedule an async flush.</span>
+    <span class="token comment">// If additional callbacks are queued before the queue is flushed, they</span>
+    <span class="token comment">// will be processed by this flush that we are scheduling.</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>customSchedulerFn<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">customSchedulerFn</span><span class="token punctuation">(</span>flush<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token function">scheduleFlush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">setScheduler</span><span class="token punctuation">(</span><span class="token parameter">scheduleFn</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  customSchedulerFn <span class="token operator">=</span> scheduleFn<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">setAsap</span><span class="token punctuation">(</span><span class="token parameter">asapFn</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  asap <span class="token operator">=</span> asapFn<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> browserWindow <span class="token operator">=</span> <span class="token keyword">typeof</span> window <span class="token operator">!==</span> <span class="token string">'undefined'</span> <span class="token operator">?</span> window <span class="token operator">:</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> browserGlobal <span class="token operator">=</span> browserWindow <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> BrowserMutationObserver <span class="token operator">=</span> browserGlobal<span class="token punctuation">.</span>MutationObserver <span class="token operator">||</span> browserGlobal<span class="token punctuation">.</span>WebKitMutationObserver<span class="token punctuation">;</span>
+<span class="token keyword">var</span> isNode <span class="token operator">=</span> <span class="token keyword">typeof</span> self <span class="token operator">===</span> <span class="token string">'undefined'</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> process <span class="token operator">!==</span> <span class="token string">'undefined'</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>process<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'[object process]'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// test for web worker but not in IE10</span>
+<span class="token keyword">var</span> isWorker <span class="token operator">=</span> <span class="token keyword">typeof</span> Uint8ClampedArray <span class="token operator">!==</span> <span class="token string">'undefined'</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> importScripts <span class="token operator">!==</span> <span class="token string">'undefined'</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> MessageChannel <span class="token operator">!==</span> <span class="token string">'undefined'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// node</span>
+<span class="token keyword">function</span> <span class="token function">useNextTick</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// node version 0.10.x displays a deprecation warning when nextTick is used recursively</span>
+  <span class="token comment">// see https://github.com/cujojs/when/issues/410 for details</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> process<span class="token punctuation">.</span><span class="token function">nextTick</span><span class="token punctuation">(</span>flush<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// vertx</span>
+<span class="token keyword">function</span> <span class="token function">useVertxTimer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> vertxNext <span class="token operator">!==</span> <span class="token string">'undefined'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">vertxNext</span><span class="token punctuation">(</span>flush<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token function">useSetTimeout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">useMutationObserver</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> iterations <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> observer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrowserMutationObserver</span><span class="token punctuation">(</span>flush<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> node <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createTextNode</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  observer<span class="token punctuation">.</span><span class="token function">observe</span><span class="token punctuation">(</span>node<span class="token punctuation">,</span> <span class="token punctuation">{</span> characterData<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    node<span class="token punctuation">.</span>data <span class="token operator">=</span> iterations <span class="token operator">=</span> <span class="token operator">++</span>iterations <span class="token operator">%</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// web worker</span>
+<span class="token keyword">function</span> <span class="token function">useMessageChannel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> channel <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MessageChannel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  channel<span class="token punctuation">.</span>port1<span class="token punctuation">.</span>onmessage <span class="token operator">=</span> flush<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> channel<span class="token punctuation">.</span>port2<span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">useSetTimeout</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Store setTimeout reference so es6-promise will be unaffected by</span>
+  <span class="token comment">// other code modifying setTimeout (like sinon.useFakeTimers())</span>
+  <span class="token keyword">var</span> globalSetTimeout <span class="token operator">=</span> setTimeout<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">globalSetTimeout</span><span class="token punctuation">(</span>flush<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> queue <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i <span class="token operator">+=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> callback <span class="token operator">=</span> queue<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> arg <span class="token operator">=</span> queue<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token function">callback</span><span class="token punctuation">(</span>arg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    queue<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+    queue<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  len <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">attemptVertx</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> vertx <span class="token operator">=</span> <span class="token function">Function</span><span class="token punctuation">(</span><span class="token string">'return this'</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'vertx'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    vertxNext <span class="token operator">=</span> vertx<span class="token punctuation">.</span>runOnLoop <span class="token operator">||</span> vertx<span class="token punctuation">.</span>runOnContext<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token function">useVertxTimer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">useSetTimeout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> scheduleFlush <span class="token operator">=</span> <span class="token keyword">void</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token comment">// Decide what async method to use to triggering processing of queued callbacks:</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>isNode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  scheduleFlush <span class="token operator">=</span> <span class="token function">useNextTick</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>BrowserMutationObserver<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  scheduleFlush <span class="token operator">=</span> <span class="token function">useMutationObserver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>isWorker<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  scheduleFlush <span class="token operator">=</span> <span class="token function">useMessageChannel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>browserWindow <span class="token operator">===</span> <span class="token keyword">undefined</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> require <span class="token operator">===</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  scheduleFlush <span class="token operator">=</span> <span class="token function">attemptVertx</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  scheduleFlush <span class="token operator">=</span> <span class="token function">useSetTimeout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">onFulfillment<span class="token punctuation">,</span> onRejection</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">var</span> parent <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span><span class="token comment">// 实例化对象</span>
+  <span class="token comment">// 根据promiseA+规范 then 需要返回一个新的promise对象</span>
+  <span class="token comment">// 而这个新promise对象我们是根据 当前对象的constructor属性 来构造</span>
+  <span class="token comment">// @ts-ignore</span>
+  <span class="token comment">// 出现了new操作符 表示实例化一个对象，new操作出现比会出现构造函数</span>
+  <span class="token comment">// this表示当前promise对象，当前promise对象（this）的constructor属性指向当前promise对象（this）的构造函数</span>
+  <span class="token comment">// this.constructor指向 当前promise对象（this）的构造函数</span>
+  <span class="token comment">// 而Promise构造函数的入参一个函数，这里我们传入一个空函数</span>
+  <span class="token comment">// 即then方法返回一个promise对象，所以就可以链式调用</span>
+  <span class="token comment">// 为什么不返回this，因为promise改变是单向的只能改变一次pending-fulfilled  pending-rejected</span>
+  <span class="token comment">// 次生成的promise对象无需再次实例化 tongguo noop控制</span>
+  <span class="token keyword">var</span> child <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">this<span class="token punctuation">.</span>constructor</span><span class="token punctuation">(</span>noop<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 实例化一次promise 就会生成一个promiseid</span>
+  
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>child<span class="token punctuation">[</span><span class="token constant">PROMISE_ID</span><span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">makePromise</span><span class="token punctuation">(</span>child<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">var</span> _state <span class="token operator">=</span> parent<span class="token punctuation">.</span>_state<span class="token punctuation">;</span><span class="token comment">// 第一次promise的状态默认</span>
+
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>_state<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 获取传入的函数 resolve  reject</span>
+    <span class="token keyword">var</span> callback <span class="token operator">=</span> arguments<span class="token punctuation">[</span>_state <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">asap</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token function">invokeCallback</span><span class="token punctuation">(</span>_state<span class="token punctuation">,</span> child<span class="token punctuation">,</span> callback<span class="token punctuation">,</span> parent<span class="token punctuation">.</span>_result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token function">subscribe</span><span class="token punctuation">(</span>parent<span class="token punctuation">,</span> child<span class="token punctuation">,</span> onFulfillment<span class="token punctuation">,</span> onRejection<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> child<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">resolve$1</span><span class="token punctuation">(</span><span class="token parameter">object</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">/*jshint validthis:true */</span>
+  <span class="token keyword">var</span> Constructor <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>object <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> object <span class="token operator">===</span> <span class="token string">'object'</span> <span class="token operator">&amp;&amp;</span> object<span class="token punctuation">.</span>constructor <span class="token operator">===</span> Constructor<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> object<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">var</span> promise <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Constructor</span><span class="token punctuation">(</span>noop<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">resolve</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> object<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> promise<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> <span class="token constant">PROMISE_ID</span> <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token number">36</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">noop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> <span class="token constant">PENDING</span> <span class="token operator">=</span> <span class="token keyword">void</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> <span class="token constant">FULFILLED</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> <span class="token constant">REJECTED</span> <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> <span class="token constant">TRY_CATCH_ERROR</span> <span class="token operator">=</span> <span class="token punctuation">{</span> error<span class="token operator">:</span> <span class="token keyword">null</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">selfFulfillment</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">&quot;You cannot resolve a promise with itself&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">cannotReturnOwn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">'A promises callback cannot return that same promise.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">getThen</span><span class="token punctuation">(</span><span class="token parameter">promise</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> promise<span class="token punctuation">.</span>then<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token constant">TRY_CATCH_ERROR</span><span class="token punctuation">.</span>error <span class="token operator">=</span> error<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token constant">TRY_CATCH_ERROR</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">tryThen</span><span class="token punctuation">(</span><span class="token parameter">then$$<span class="token number">1</span><span class="token punctuation">,</span> value<span class="token punctuation">,</span> fulfillmentHandler<span class="token punctuation">,</span> rejectionHandler</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token function">then$$1</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> fulfillmentHandler<span class="token punctuation">,</span> rejectionHandler<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> e<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">handleForeignThenable</span><span class="token punctuation">(</span><span class="token parameter">promise<span class="token punctuation">,</span> thenable<span class="token punctuation">,</span> then$$<span class="token number">1</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">asap</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">promise</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> sealed <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> error <span class="token operator">=</span> <span class="token function">tryThen</span><span class="token punctuation">(</span>then$$<span class="token number">1</span><span class="token punctuation">,</span> thenable<span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>sealed<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      sealed <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>thenable <span class="token operator">!==</span> value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">resolve</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token function">fulfill</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">reason</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>sealed<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      sealed <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+
+      <span class="token function">reject</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> reason<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'Settle: '</span> <span class="token operator">+</span> <span class="token punctuation">(</span>promise<span class="token punctuation">.</span>_label <span class="token operator">||</span> <span class="token string">' unknown promise'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>sealed <span class="token operator">&amp;&amp;</span> error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      sealed <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+      <span class="token function">reject</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> promise<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">handleOwnThenable</span><span class="token punctuation">(</span><span class="token parameter">promise<span class="token punctuation">,</span> thenable</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>thenable<span class="token punctuation">.</span>_state <span class="token operator">===</span> <span class="token constant">FULFILLED</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">fulfill</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> thenable<span class="token punctuation">.</span>_result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>thenable<span class="token punctuation">.</span>_state <span class="token operator">===</span> <span class="token constant">REJECTED</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">reject</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> thenable<span class="token punctuation">.</span>_result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token function">subscribe</span><span class="token punctuation">(</span>thenable<span class="token punctuation">,</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token function">resolve</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">reason</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token function">reject</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> reason<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">handleMaybeThenable</span><span class="token punctuation">(</span><span class="token parameter">promise<span class="token punctuation">,</span> maybeThenable<span class="token punctuation">,</span> then$$<span class="token number">1</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>maybeThenable<span class="token punctuation">.</span>constructor <span class="token operator">===</span> promise<span class="token punctuation">.</span>constructor <span class="token operator">&amp;&amp;</span> then$$<span class="token number">1</span> <span class="token operator">===</span> then <span class="token operator">&amp;&amp;</span> maybeThenable<span class="token punctuation">.</span>constructor<span class="token punctuation">.</span>resolve <span class="token operator">===</span> resolve$<span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">handleOwnThenable</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> maybeThenable<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>then$$<span class="token number">1</span> <span class="token operator">===</span> <span class="token constant">TRY_CATCH_ERROR</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">reject</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> <span class="token constant">TRY_CATCH_ERROR</span><span class="token punctuation">.</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token constant">TRY_CATCH_ERROR</span><span class="token punctuation">.</span>error <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>then$$<span class="token number">1</span> <span class="token operator">===</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">fulfill</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> maybeThenable<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isFunction</span><span class="token punctuation">(</span>then$$<span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">handleForeignThenable</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> maybeThenable<span class="token punctuation">,</span> then$$<span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token function">fulfill</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> maybeThenable<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token parameter">promise<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">// 根据promiseA+规范 promise解决程序 [[Resolve]](promise, x) 如果是同一个对象 抛出typeError  循环引用了</span>
+	<span class="token comment">// You cannot resolve a promise with itself  你无法解决自己的承诺</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>promise <span class="token operator">===</span> value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">reject</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> <span class="token function">selfFulfillment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">objectOrFunction</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 如果执行的是一个函数或者对象 </span>
+    <span class="token function">handleMaybeThenable</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> value<span class="token punctuation">,</span> <span class="token function">getThen</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+	<span class="token comment">// 如果resolve的参数不是对象或者函数，直接调用fulfill 修改状态与数据</span>
+    <span class="token function">fulfill</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">publishRejection</span><span class="token punctuation">(</span><span class="token parameter">promise</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>promise<span class="token punctuation">.</span>_onerror<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    promise<span class="token punctuation">.</span><span class="token function">_onerror</span><span class="token punctuation">(</span>promise<span class="token punctuation">.</span>_result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">publish</span><span class="token punctuation">(</span>promise<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">fulfill</span><span class="token punctuation">(</span><span class="token parameter">promise<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">// 初始状态</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>promise<span class="token punctuation">.</span>_state <span class="token operator">!==</span> <span class="token constant">PENDING</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+	<span class="token comment">// 直接改变状态与值</span>
+  promise<span class="token punctuation">.</span>_result <span class="token operator">=</span> value<span class="token punctuation">;</span>
+  promise<span class="token punctuation">.</span>_state <span class="token operator">=</span> <span class="token constant">FULFILLED</span><span class="token punctuation">;</span>
+	<span class="token comment">// 释放 事件池</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>promise<span class="token punctuation">.</span>_subscribers<span class="token punctuation">.</span>length <span class="token operator">!==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">asap</span><span class="token punctuation">(</span>publish<span class="token punctuation">,</span> promise<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">reject</span><span class="token punctuation">(</span><span class="token parameter">promise<span class="token punctuation">,</span> reason</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">// promise规范 只能pending-&gt;rejected  pending-&gt;resolve</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>promise<span class="token punctuation">.</span>_state <span class="token operator">!==</span> <span class="token constant">PENDING</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 改变状态与值</span>
+  promise<span class="token punctuation">.</span>_state <span class="token operator">=</span> <span class="token constant">REJECTED</span><span class="token punctuation">;</span>
+  promise<span class="token punctuation">.</span>_result <span class="token operator">=</span> reason<span class="token punctuation">;</span>
+
+  <span class="token function">asap</span><span class="token punctuation">(</span>publishRejection<span class="token punctuation">,</span> promise<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token parameter">parent<span class="token punctuation">,</span> child<span class="token punctuation">,</span> onFulfillment<span class="token punctuation">,</span> onRejection</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> _subscribers <span class="token operator">=</span> parent<span class="token punctuation">.</span>_subscribers<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> length <span class="token operator">=</span> _subscribers<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+
+
+  parent<span class="token punctuation">.</span>_onerror <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
+  _subscribers<span class="token punctuation">[</span>length<span class="token punctuation">]</span> <span class="token operator">=</span> child<span class="token punctuation">;</span>
+  _subscribers<span class="token punctuation">[</span>length <span class="token operator">+</span> <span class="token constant">FULFILLED</span><span class="token punctuation">]</span> <span class="token operator">=</span> onFulfillment<span class="token punctuation">;</span>
+  _subscribers<span class="token punctuation">[</span>length <span class="token operator">+</span> <span class="token constant">REJECTED</span><span class="token punctuation">]</span> <span class="token operator">=</span> onRejection<span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>length <span class="token operator">===</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> parent<span class="token punctuation">.</span>_state<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">asap</span><span class="token punctuation">(</span>publish<span class="token punctuation">,</span> parent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">publish</span><span class="token punctuation">(</span><span class="token parameter">promise</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> subscribers <span class="token operator">=</span> promise<span class="token punctuation">.</span>_subscribers<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> settled <span class="token operator">=</span> promise<span class="token punctuation">.</span>_state<span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>subscribers<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">var</span> child <span class="token operator">=</span> <span class="token keyword">void</span> <span class="token number">0</span><span class="token punctuation">,</span>
+      callback <span class="token operator">=</span> <span class="token keyword">void</span> <span class="token number">0</span><span class="token punctuation">,</span>
+      detail <span class="token operator">=</span> promise<span class="token punctuation">.</span>_result<span class="token punctuation">;</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> subscribers<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i <span class="token operator">+=</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    child <span class="token operator">=</span> subscribers<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    callback <span class="token operator">=</span> subscribers<span class="token punctuation">[</span>i <span class="token operator">+</span> settled<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>child<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">invokeCallback</span><span class="token punctuation">(</span>settled<span class="token punctuation">,</span> child<span class="token punctuation">,</span> callback<span class="token punctuation">,</span> detail<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token function">callback</span><span class="token punctuation">(</span>detail<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  promise<span class="token punctuation">.</span>_subscribers<span class="token punctuation">.</span>length <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">tryCatch</span><span class="token punctuation">(</span><span class="token parameter">callback<span class="token punctuation">,</span> detail</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">callback</span><span class="token punctuation">(</span>detail<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token constant">TRY_CATCH_ERROR</span><span class="token punctuation">.</span>error <span class="token operator">=</span> e<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token constant">TRY_CATCH_ERROR</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">invokeCallback</span><span class="token punctuation">(</span><span class="token parameter">settled<span class="token punctuation">,</span> promise<span class="token punctuation">,</span> callback<span class="token punctuation">,</span> detail</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> hasCallback <span class="token operator">=</span> <span class="token function">isFunction</span><span class="token punctuation">(</span>callback<span class="token punctuation">)</span><span class="token punctuation">,</span>
+      value <span class="token operator">=</span> <span class="token keyword">void</span> <span class="token number">0</span><span class="token punctuation">,</span>
+      error <span class="token operator">=</span> <span class="token keyword">void</span> <span class="token number">0</span><span class="token punctuation">,</span>
+      succeeded <span class="token operator">=</span> <span class="token keyword">void</span> <span class="token number">0</span><span class="token punctuation">,</span>
+      failed <span class="token operator">=</span> <span class="token keyword">void</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>hasCallback<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    value <span class="token operator">=</span> <span class="token function">tryCatch</span><span class="token punctuation">(</span>callback<span class="token punctuation">,</span> detail<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>value <span class="token operator">===</span> <span class="token constant">TRY_CATCH_ERROR</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      failed <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+      error <span class="token operator">=</span> value<span class="token punctuation">.</span>error<span class="token punctuation">;</span>
+      value<span class="token punctuation">.</span>error <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      succeeded <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>promise <span class="token operator">===</span> value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">reject</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> <span class="token function">cannotReturnOwn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    value <span class="token operator">=</span> detail<span class="token punctuation">;</span>
+    succeeded <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>promise<span class="token punctuation">.</span>_state <span class="token operator">!==</span> <span class="token constant">PENDING</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// noop</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>hasCallback <span class="token operator">&amp;&amp;</span> succeeded<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">resolve</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>failed<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">reject</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>settled <span class="token operator">===</span> <span class="token constant">FULFILLED</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">fulfill</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>settled <span class="token operator">===</span> <span class="token constant">REJECTED</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">reject</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 初始化promise，</span>
+<span class="token comment">// 参数：实例化对象/执行函数</span>
+<span class="token comment">// 这里要明白resolver是什么 执行器</span>
+<span class="token comment">// resolver 是我们promise一开始传入的参数</span>
+<span class="token comment">// new Promise((resolve, rejected) =&gt; {resolve(1)}) 1-1</span>
+<span class="token comment">// resolver 就是 (resolve, rejected) =&gt; {resolve(1)}</span>
+<span class="token comment">// 在初始化promise的时候内部执行了 resolver </span>
+<span class="token comment">// 也就是我在1-1 写入了resolve(1)的时候他执行的是resolver的第一个入参数resolvePromise(),然后执行resolve()</span>
+<span class="token keyword">function</span> <span class="token function">initializePromise</span><span class="token punctuation">(</span><span class="token parameter">promise<span class="token punctuation">,</span> resolver</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">// 如果执行函数过程中出现错误抛出</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token function">resolver</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">resolvePromise</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">resolve</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token function">rejectPromise</span><span class="token punctuation">(</span><span class="token parameter">reason</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">reject</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> reason<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">reject</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> id <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">nextId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> id<span class="token operator">++</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">makePromise</span><span class="token punctuation">(</span><span class="token parameter">promise</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  promise<span class="token punctuation">[</span><span class="token constant">PROMISE_ID</span><span class="token punctuation">]</span> <span class="token operator">=</span> id<span class="token operator">++</span><span class="token punctuation">;</span>
+  promise<span class="token punctuation">.</span>_state <span class="token operator">=</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+  promise<span class="token punctuation">.</span>_result <span class="token operator">=</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+  promise<span class="token punctuation">.</span>_subscribers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">validationError</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'Array Methods must be provided an Array'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> <span class="token function-variable function">Enumerator</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">function</span> <span class="token function">Enumerator</span><span class="token punctuation">(</span><span class="token parameter">Constructor<span class="token punctuation">,</span> input</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>_instanceConstructor <span class="token operator">=</span> Constructor<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>promise <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Constructor</span><span class="token punctuation">(</span>noop<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span>promise<span class="token punctuation">[</span><span class="token constant">PROMISE_ID</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">makePromise</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>promise<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isArray</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>length <span class="token operator">=</span> input<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>_remaining <span class="token operator">=</span> input<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+
+      <span class="token keyword">this</span><span class="token punctuation">.</span>_result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">fulfill</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>promise<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>length <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>length <span class="token operator">||</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">_enumerate</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>_remaining <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token function">fulfill</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>promise<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token function">reject</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>promise<span class="token punctuation">,</span> <span class="token function">validationError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token class-name">Enumerator</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">_enumerate</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">_enumerate</span><span class="token punctuation">(</span><span class="token parameter">input</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_state <span class="token operator">===</span> <span class="token constant">PENDING</span> <span class="token operator">&amp;&amp;</span> i <span class="token operator">&lt;</span> input<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">_eachEntry</span><span class="token punctuation">(</span>input<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token class-name">Enumerator</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">_eachEntry</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">_eachEntry</span><span class="token punctuation">(</span><span class="token parameter">entry<span class="token punctuation">,</span> i</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> c <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_instanceConstructor<span class="token punctuation">;</span>
+    <span class="token keyword">var</span> resolve$$<span class="token number">1</span> <span class="token operator">=</span> c<span class="token punctuation">.</span>resolve<span class="token punctuation">;</span>
+
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>resolve$$<span class="token number">1</span> <span class="token operator">===</span> resolve$<span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> _then <span class="token operator">=</span> <span class="token function">getThen</span><span class="token punctuation">(</span>entry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>_then <span class="token operator">===</span> then <span class="token operator">&amp;&amp;</span> entry<span class="token punctuation">.</span>_state <span class="token operator">!==</span> <span class="token constant">PENDING</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">_settledAt</span><span class="token punctuation">(</span>entry<span class="token punctuation">.</span>_state<span class="token punctuation">,</span> i<span class="token punctuation">,</span> entry<span class="token punctuation">.</span>_result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> _then <span class="token operator">!==</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>_remaining<span class="token operator">--</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>_result<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> entry<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">===</span> Promise$<span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> promise <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">c</span><span class="token punctuation">(</span>noop<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">handleMaybeThenable</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> entry<span class="token punctuation">,</span> _then<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">_willSettleAt</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">_willSettleAt</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">c</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">resolve$$<span class="token number">1</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">return</span> <span class="token function">resolve$$1</span><span class="token punctuation">(</span>entry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">_willSettleAt</span><span class="token punctuation">(</span><span class="token function">resolve$$1</span><span class="token punctuation">(</span>entry<span class="token punctuation">)</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token class-name">Enumerator</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">_settledAt</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">_settledAt</span><span class="token punctuation">(</span><span class="token parameter">state<span class="token punctuation">,</span> i<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> promise <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>promise<span class="token punctuation">;</span>
+
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>promise<span class="token punctuation">.</span>_state <span class="token operator">===</span> <span class="token constant">PENDING</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>_remaining<span class="token operator">--</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>state <span class="token operator">===</span> <span class="token constant">REJECTED</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">reject</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>_result<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> value<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>_remaining <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">fulfill</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token class-name">Enumerator</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">_willSettleAt</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">_willSettleAt</span><span class="token punctuation">(</span><span class="token parameter">promise<span class="token punctuation">,</span> i</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> enumerator <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+
+    <span class="token function">subscribe</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> enumerator<span class="token punctuation">.</span><span class="token function">_settledAt</span><span class="token punctuation">(</span><span class="token constant">FULFILLED</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">reason</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> enumerator<span class="token punctuation">.</span><span class="token function">_settledAt</span><span class="token punctuation">(</span><span class="token constant">REJECTED</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> reason<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> Enumerator<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token keyword">function</span> <span class="token function">all</span><span class="token punctuation">(</span><span class="token parameter">entries</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Enumerator</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> entries<span class="token punctuation">)</span><span class="token punctuation">.</span>promise<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">race</span><span class="token punctuation">(</span><span class="token parameter">entries</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">/*jshint validthis:true */</span>
+  <span class="token keyword">var</span> Constructor <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+  <span class="token comment">// 判断是否是数组</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isArray</span><span class="token punctuation">(</span>entries<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Constructor</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">_<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token function">reject</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">'You must pass an array to race.'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Constructor</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> length <span class="token operator">=</span> entries<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Constructor<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>entries<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">function</span> <span class="token function">reject$1</span><span class="token punctuation">(</span><span class="token parameter">reason</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">/*jshint validthis:true */</span>
+  <span class="token keyword">var</span> Constructor <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> promise <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Constructor</span><span class="token punctuation">(</span>noop<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">reject</span><span class="token punctuation">(</span>promise<span class="token punctuation">,</span> reason<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> promise<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// resolver函数 必须作为第一个参数，传递给Promise构造函数。否则抛出错误</span>
+<span class="token keyword">function</span> <span class="token function">needsResolver</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">'You must pass a resolver function as the first argument to the promise constructor'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Promise是对象构造函数，不能作为函数调用。调用时使用 `new`操作符</span>
+<span class="token keyword">function</span> <span class="token function">needsNew</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">&quot;Failed to construct 'Promise': Please use the 'new' operator, this object constructor cannot be called as a function.&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">var</span> <span class="token function-variable function">Promise$1</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">// 定义promise函数</span>
+  <span class="token keyword">function</span> <span class="token function">Promise</span><span class="token punctuation">(</span><span class="token parameter">resolver</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">[</span><span class="token constant">PROMISE_ID</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">nextId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// 定义 值  状态</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>_result <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_state <span class="token operator">=</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+	<span class="token comment">// 定义 事件池</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>_subscribers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+	<span class="token comment">// resolver是不是一个空函数</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>noop <span class="token operator">!==</span> resolver<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token comment">// 如果resolver不是函数 抛出 throw new TypeError 类型错误</span>
+      <span class="token keyword">typeof</span> resolver <span class="token operator">!==</span> <span class="token string">'function'</span> <span class="token operator">&amp;&amp;</span> <span class="token function">needsResolver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	  <span class="token comment">// 判断this是不是Promise实例， </span>
+	  <span class="token comment">// 是 调用 initializePromise 初始化promise</span>
+	  <span class="token comment">// 否 抛出错误 throw new TypeError 类型错误  需要实例化</span>
+      <span class="token keyword">this</span> <span class="token keyword">instanceof</span> <span class="token class-name">Promise</span> <span class="token operator">?</span> <span class="token function">initializePromise</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> resolver<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">needsNew</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">/**
+  `catch` is simply sugar for `then(undefined, onRejection)` which makes it the same
+  as the catch block of a try/catch statement.
+
+  @method catch
+  @param {Function} onRejection
+  Useful for tooling.
+  @return {Promise}
+  */</span>
+
+
+  <span class="token class-name">Promise</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">catch</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">_catch</span><span class="token punctuation">(</span><span class="token parameter">onRejection</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> onRejection<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/**
+    `finally` will be invoked regardless of the promise's fate just as native
+    try/catch/finally behaves
+  
+    Synchronous example:
+  
+
+  
+    Asynchronous example:
+  
+
+  
+    @method finally
+    @param {Function} callback
+    @return {Promise}
+  */</span>
+
+
+  <span class="token class-name">Promise</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">finally</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">_finally</span><span class="token punctuation">(</span><span class="token parameter">callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> promise <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> constructor <span class="token operator">=</span> promise<span class="token punctuation">.</span>constructor<span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isFunction</span><span class="token punctuation">(</span>callback<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> promise<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> constructor<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">return</span> value<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">reason</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> constructor<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">throw</span> reason<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> promise<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>callback<span class="token punctuation">,</span> callback<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> Promise<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token class-name">Promise$1</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>then <span class="token operator">=</span> then<span class="token punctuation">;</span>
+Promise$<span class="token number">1.</span>all <span class="token operator">=</span> all<span class="token punctuation">;</span>
+Promise$<span class="token number">1.</span>race <span class="token operator">=</span> race<span class="token punctuation">;</span>
+Promise$<span class="token number">1.</span>resolve <span class="token operator">=</span> resolve$<span class="token number">1</span><span class="token punctuation">;</span>
+Promise$<span class="token number">1.</span>reject <span class="token operator">=</span> reject$<span class="token number">1</span><span class="token punctuation">;</span>
+Promise$<span class="token number">1.</span>_setScheduler <span class="token operator">=</span> setScheduler<span class="token punctuation">;</span>
+Promise$<span class="token number">1.</span>_setAsap <span class="token operator">=</span> setAsap<span class="token punctuation">;</span>
+Promise$<span class="token number">1.</span>_asap <span class="token operator">=</span> asap<span class="token punctuation">;</span>
+
+<span class="token comment">/*global self*/</span>
+<span class="token keyword">function</span> <span class="token function">polyfill</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> local <span class="token operator">=</span> <span class="token keyword">void</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> global <span class="token operator">!==</span> <span class="token string">'undefined'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    local <span class="token operator">=</span> global<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> self <span class="token operator">!==</span> <span class="token string">'undefined'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    local <span class="token operator">=</span> self<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+      local <span class="token operator">=</span> <span class="token function">Function</span><span class="token punctuation">(</span><span class="token string">'return this'</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'polyfill failed because global object is unavailable in this environment'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">var</span> <span class="token constant">P</span> <span class="token operator">=</span> local<span class="token punctuation">.</span>Promise<span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token constant">P</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> promiseToString <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+      promiseToString <span class="token operator">=</span> <span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token constant">P</span><span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// silently ignored</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>promiseToString <span class="token operator">===</span> <span class="token string">'[object Promise]'</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token constant">P</span><span class="token punctuation">.</span>cast<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  local<span class="token punctuation">.</span>Promise <span class="token operator">=</span> Promise$<span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Strange compat..</span>
+Promise$<span class="token number">1.</span>polyfill <span class="token operator">=</span> polyfill<span class="token punctuation">;</span>
+Promise$<span class="token number">1.</span>Promise <span class="token operator">=</span> Promise$<span class="token number">1</span><span class="token punctuation">;</span>
+
+<span class="token keyword">return</span> Promise$<span class="token number">1</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="foreach-复制对象"><a href="#foreach-复制对象" class="header-anchor">#</a> forEach 复制对象</h4> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">copy</span><span class="token punctuation">(</span><span class="token parameter">obj</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> copy <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> propNames <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyNames</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  propNames<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> desc <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyDescriptor</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>copy<span class="token punctuation">,</span> name<span class="token punctuation">,</span> desc<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> copy<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> obj1 <span class="token operator">=</span> <span class="token punctuation">{</span> a<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> b<span class="token operator">:</span> <span class="token number">2</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> obj2 <span class="token operator">=</span> <span class="token function">copy</span><span class="token punctuation">(</span>obj1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="面试注意点"><a href="#面试注意点" class="header-anchor">#</a> 面试注意点</h4> <ul><li>如果<code>promise</code>对象状态没有改变是不会进入<code>then</code>方法</li> <li>进入到<code>then</code>方法以后 状态改为<code>pending</code></li> <li><code>.then</code> 或者 <code>.catch</code> 的参数期望是函数，传入非函数则会发生值透传。</li></ul> <h3 id="书写"><a href="#书写" class="header-anchor">#</a> 书写</h3> <p>excutor[ig 再 k te]
+status[s dei 特 s]
+polyfill [pao 李 费 o]</p> <h3 id="手写"><a href="#手写" class="header-anchor">#</a> 手写</h3> <p><img src="/assets/img/promise-1.aab57b4c.jpg" alt="部分promise解析"></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/blog/" class="prev router-link-active">
+        我是博客列表页
+      </a></span> <span class="next"><a href="/blog/" class="router-link-active">
+        我是博客列表页
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.31ad6def.js" defer></script><script src="/assets/js/2.402b875a.js" defer></script><script src="/assets/js/14.ede9207e.js" defer></script>
+  </body>
+</html>

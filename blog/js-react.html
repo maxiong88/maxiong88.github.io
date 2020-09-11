@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>react render | 熊大的理想家</title>
+    <meta name="description" content="熊大的日志生活">
+    <meta name="generator" content="VuePress 1.3.1">
+    <link rel="icon" href="/icons/favicon.ico">
+    
+    <link rel="preload" href="/assets/css/0.styles.50f4f214.css" as="style"><link rel="preload" href="/assets/js/app.31ad6def.js" as="script"><link rel="preload" href="/assets/js/2.402b875a.js" as="script"><link rel="preload" href="/assets/js/6.5cab89aa.js" as="script"><link rel="prefetch" href="/assets/js/10.a5c60306.js"><link rel="prefetch" href="/assets/js/11.162fe585.js"><link rel="prefetch" href="/assets/js/12.c63bb013.js"><link rel="prefetch" href="/assets/js/13.5535dce1.js"><link rel="prefetch" href="/assets/js/14.ede9207e.js"><link rel="prefetch" href="/assets/js/15.64525aa8.js"><link rel="prefetch" href="/assets/js/16.4c4f43ef.js"><link rel="prefetch" href="/assets/js/17.02620db2.js"><link rel="prefetch" href="/assets/js/18.ed2442f6.js"><link rel="prefetch" href="/assets/js/19.60103380.js"><link rel="prefetch" href="/assets/js/20.eeb4dec5.js"><link rel="prefetch" href="/assets/js/21.6ccd03aa.js"><link rel="prefetch" href="/assets/js/22.9712c3da.js"><link rel="prefetch" href="/assets/js/23.427bd783.js"><link rel="prefetch" href="/assets/js/24.806f7b5e.js"><link rel="prefetch" href="/assets/js/25.92bf1841.js"><link rel="prefetch" href="/assets/js/26.022d29b9.js"><link rel="prefetch" href="/assets/js/27.ea494720.js"><link rel="prefetch" href="/assets/js/28.2a4b77c4.js"><link rel="prefetch" href="/assets/js/29.f104b0e7.js"><link rel="prefetch" href="/assets/js/3.2692bef8.js"><link rel="prefetch" href="/assets/js/30.d1441ead.js"><link rel="prefetch" href="/assets/js/31.1bd3dd67.js"><link rel="prefetch" href="/assets/js/32.86fc5bd8.js"><link rel="prefetch" href="/assets/js/33.4066404f.js"><link rel="prefetch" href="/assets/js/34.f8b971f6.js"><link rel="prefetch" href="/assets/js/35.2039d596.js"><link rel="prefetch" href="/assets/js/36.28c245a2.js"><link rel="prefetch" href="/assets/js/37.4542ca60.js"><link rel="prefetch" href="/assets/js/38.7060884d.js"><link rel="prefetch" href="/assets/js/39.cbf6e3b3.js"><link rel="prefetch" href="/assets/js/4.683aec4b.js"><link rel="prefetch" href="/assets/js/40.b86f780d.js"><link rel="prefetch" href="/assets/js/41.cbec82e6.js"><link rel="prefetch" href="/assets/js/42.883c94fb.js"><link rel="prefetch" href="/assets/js/43.dded0337.js"><link rel="prefetch" href="/assets/js/44.73d72a16.js"><link rel="prefetch" href="/assets/js/45.ae66d107.js"><link rel="prefetch" href="/assets/js/46.7cbcd7cc.js"><link rel="prefetch" href="/assets/js/47.04493fe4.js"><link rel="prefetch" href="/assets/js/48.00e8b6f3.js"><link rel="prefetch" href="/assets/js/49.3ea416c2.js"><link rel="prefetch" href="/assets/js/5.bf679834.js"><link rel="prefetch" href="/assets/js/50.cc6c6fc9.js"><link rel="prefetch" href="/assets/js/51.78318d8f.js"><link rel="prefetch" href="/assets/js/52.6b9545d5.js"><link rel="prefetch" href="/assets/js/53.9ba62439.js"><link rel="prefetch" href="/assets/js/54.61bea3dd.js"><link rel="prefetch" href="/assets/js/55.bda3ef3f.js"><link rel="prefetch" href="/assets/js/56.c28dd041.js"><link rel="prefetch" href="/assets/js/57.ac593a27.js"><link rel="prefetch" href="/assets/js/58.1078c8f7.js"><link rel="prefetch" href="/assets/js/59.5a253692.js"><link rel="prefetch" href="/assets/js/60.d4504388.js"><link rel="prefetch" href="/assets/js/61.1bd9047b.js"><link rel="prefetch" href="/assets/js/62.4a1cf18a.js"><link rel="prefetch" href="/assets/js/63.20f83cdd.js"><link rel="prefetch" href="/assets/js/64.e3d5f47f.js"><link rel="prefetch" href="/assets/js/65.d91b0f58.js"><link rel="prefetch" href="/assets/js/66.695a35f4.js"><link rel="prefetch" href="/assets/js/67.28168e14.js"><link rel="prefetch" href="/assets/js/68.05b3ca2c.js"><link rel="prefetch" href="/assets/js/69.16017d6e.js"><link rel="prefetch" href="/assets/js/7.2f5682ad.js"><link rel="prefetch" href="/assets/js/70.46eeee02.js"><link rel="prefetch" href="/assets/js/71.8564bd97.js"><link rel="prefetch" href="/assets/js/72.7a6b963c.js"><link rel="prefetch" href="/assets/js/73.74f6e720.js"><link rel="prefetch" href="/assets/js/74.2df8cd5a.js"><link rel="prefetch" href="/assets/js/75.4dad2391.js"><link rel="prefetch" href="/assets/js/76.fdb6bdac.js"><link rel="prefetch" href="/assets/js/77.7fec9d99.js"><link rel="prefetch" href="/assets/js/78.672abc99.js"><link rel="prefetch" href="/assets/js/79.5f85bd87.js"><link rel="prefetch" href="/assets/js/8.c99a06ba.js"><link rel="prefetch" href="/assets/js/80.bd894c75.js"><link rel="prefetch" href="/assets/js/81.6f1adf51.js"><link rel="prefetch" href="/assets/js/82.cc0a99a4.js"><link rel="prefetch" href="/assets/js/9.e2c266a1.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.50f4f214.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">熊大的理想家</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客" class="dropdown-title"><span class="title">博客</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/" class="nav-link router-link-active">
+  blog
+</a></li><li class="dropdown-item"><!----> <a href="/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/html/" class="nav-link">
+  html
+</a></li><li class="dropdown-item"><!----> <a href="/ms/" class="nav-link">
+  ms
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="参考" class="dropdown-title"><span class="title">参考</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://www.h5anli.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  H5案例
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="/blog/.html" class="nav-link">
+  vue-weibo
+</a></li><li class="dropdown-item"><!----> <a href="/blog/.html" class="nav-link">
+  vue-cms
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/maxiong88/email-koa-webpack-phantom" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  koa-email
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="/site/q-site.html" class="nav-link">
+  优质站点
+</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  MEME
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客" class="dropdown-title"><span class="title">博客</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/" class="nav-link router-link-active">
+  blog
+</a></li><li class="dropdown-item"><!----> <a href="/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/html/" class="nav-link">
+  html
+</a></li><li class="dropdown-item"><!----> <a href="/ms/" class="nav-link">
+  ms
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="参考" class="dropdown-title"><span class="title">参考</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://www.h5anli.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  H5案例
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="/blog/.html" class="nav-link">
+  vue-weibo
+</a></li><li class="dropdown-item"><!----> <a href="/blog/.html" class="nav-link">
+  vue-cms
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/maxiong88/email-koa-webpack-phantom" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  koa-email
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="/site/q-site.html" class="nav-link">
+  优质站点
+</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  MEME
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>react render</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/js-react.html#createelement-type-config-childrens" class="sidebar-link">createElement(type, [config], [childrens])</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/blog/js-react.html#reactdom-render" class="sidebar-link">ReactDOM.render</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/blog/js-react.html#react渲染机制" class="sidebar-link">React渲染机制</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/blog/js-react.html#生命周期" class="sidebar-link">生命周期</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/js-react.html#constructor" class="sidebar-link">constructor()</a></li><li class="sidebar-sub-header"><a href="/blog/js-react.html#componentwillmount" class="sidebar-link">componentWillMount()</a></li><li class="sidebar-sub-header"><a href="/blog/js-react.html#render" class="sidebar-link">render()</a></li><li class="sidebar-sub-header"><a href="/blog/js-react.html#componentdidmount" class="sidebar-link">componentDidMount()</a></li><li class="sidebar-sub-header"><a href="/blog/js-react.html#componentwillreceiveprops-nextprops" class="sidebar-link">componentWillReceiveProps(nextProps)</a></li><li class="sidebar-sub-header"><a href="/blog/js-react.html#shouldcomponentupdate-nextprops-nextstate" class="sidebar-link">shouldComponentUpdate(nextProps, nextState)</a></li><li class="sidebar-sub-header"><a href="/blog/js-react.html#componentwillupdate-nextprops-nextstate" class="sidebar-link">componentWillUpdate(nextProps, nextState)</a></li><li class="sidebar-sub-header"><a href="/blog/js-react.html#getsnapshotbeforeupdate-prevprops-prevstate" class="sidebar-link">getSnapshotBeforeUpdate(prevProps, prevState)</a></li><li class="sidebar-sub-header"><a href="/blog/js-react.html#componentdidupdate-nextprops-nextstate-snapshot" class="sidebar-link">componentDidUpdate(nextProps, nextState, snapshot)</a></li><li class="sidebar-sub-header"><a href="/blog/js-react.html#componentwillunmount" class="sidebar-link">componentWillUnmount()</a></li><li class="sidebar-sub-header"><a href="/blog/js-react.html#componentdidcatch-error-info" class="sidebar-link">componentDidCatch(error, info)</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><p>写react组件都会继承react.Component</p> <p>一个组件类必须要实现一个render方法，这个render方法必须要返回一个jsx元素</p> <p>注意，必须要用一个外层的jsx元素把所有内容包裹起来。返回并列多个jsx元素不合法</p> <p>JSX 是 JavaScript 语言的一种语法扩展，你可以在里面写html+js。</p> <p>jsx通过babel转换为 React.createElement(component, props, ...other)</p> <h2 id="createelement-type-config-childrens"><a href="#createelement-type-config-childrens" class="header-anchor">#</a> createElement(type, [config], [childrens])</h2> <p>然后babel就会帮我们调用 React.createElement。 这也是为什么我们就算文件内没用到 React，也需要引入的原因。</p> <div class="language-jsx extra-class"><pre class="language-jsx"><code>
+<span class="token comment">// jsx语法</span>
+<span class="token keyword">let</span> app <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>app<span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">马雄</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// babel转义 </span>
+<span class="token keyword">let</span> app <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>id<span class="token operator">:</span> <span class="token string">'app'</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'马雄'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span>
+
+</code></pre></div><p>createElement 是将jsx转为 ReactElement的函数， 我们把 app 标签打印出来可以看到这个对象就是我们所说的ReactElement。</p> <p><img src="/assets/img/react-createelement-1.c67ee9c7.png" alt="react-createElement"></p> <p>这里面主要是处理一下 key, ref, defaultProps， 然后将其他的参数和 childrens 放到props对象，最后调用ReactElement。</p> <p>上面我们写的都是直接写jsx，如果是一个 Class 形式的ReactComponent，其实也一样，只是type从原来的dom标签变成传入的类。</p> <div class="language- extra-class"><pre class="language-text"><code>
+import React from 'react';
+
+let app = React.createElement('div', {id: 'app'}, 'Hello World!');
+
+class Ho extends React.Component{
+    render(){
+        return (
+            &lt;div id='app'&gt;
+                &lt;h2&gt;gggg&lt;/h2&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+console.log(app, Ho, &lt;Ho /&gt;)
+</code></pre></div><p><img src="/assets/img/react-createlement-2.fd9efeff.png" alt="react-createElement"></p> <p>对比上一次的结果，我们发现只有type这里是存在差异的，而这种差异带来的，就是React在渲染元素、组件时候的差异了</p> <p>组件的定义: 是一个可复用的部件，接收props，并返回元素。</p> <p><code>到这一步，我们只是做了从jsx语法到React Element的转换，但基本上React库的部分就到这里了。</code></p> <h2 id="reactdom-render"><a href="#reactdom-render" class="header-anchor">#</a> ReactDOM.render</h2> <p>在开始之前，我们要先知道一个事情就是：平时我们写React，都要引入多一个 'react-dom'，用 ReactDOM.render来把React生成的ReactElement渲染到 DOM Tree 中。</p> <p>也就是说我们引入的React负责ReactElement组件相关的东西，渲染层面抽出来交给，ReactDOM、 ReactNative，这种分离这也赋予了React跨终端渲染的能力。</p> <p>首先我们看一下 <code>React.render(&lt;T /&gt;, document.getElementById('container'))</code>，这里面的<code>&lt;T /&gt;</code>首先会被babel调用 React.createElement生成为ReactElement</p> <p>第一阶段 准备ReactRoot和后续需要的基本属性</p> <p>ReactRoot</p> <p>ReactDOM.render 首先会调用 legacyCreateRootFromDOMContainer 创建一个ReactRoot的实例，我们叫他root。</p> <div class="language- extra-class"><pre class="language-text"><code>
+const App = (&lt;h2&gt;Hello World!&lt;/h2&gt;)
+ReactDOM.render(App, document.querySelector('#app'))
+
+或者
+
+class App extends React.Component {
+  render(){
+    return (
+      &lt;div&gt;
+        &lt;h2&gt;Hello World!&lt;/h2&gt;
+      &lt;/div&gt;
+    )
+  }
+}
+ReactDOM.render(&lt;App /&gt;, document.querySelector('#app'))
+
+</code></pre></div><p>我们知道上面两个例子中ReactDOM.render第一个参数传入的都是ReactElement的“实例”。</p> <p>如果传入了字符串 提示</p> <p><code>ReactDOM.render(): Invalid component element. Instead of passing a string like 'div', pass React.createElement('div') or &lt;div /&gt;</code></p> <p>查看ReactDOM.js文件，可以看到ReactDOM.render引用ReactMount.js的render方法,如下：</p> <p>src/renders/dom/ReactDOM.js</p> <p>ReactDOM.render = ReactMount.render</p> <p>src/renders/dom/client/Reactmount.js</p> <p>Reactmount = {
+render: =&gt; _renderSubtreeIntoContainer
+}</p> <p>当调用ReactDOM.render时，使用TopLevelWrapper对element进行包装，</p> <p>Render函数在什么情况下会被调用，当且仅当下面三种情况：
+组件初始化
+组件的props和state发生改变
+组件内调用forceUpdate函数</p> <h4 id="本文用到的文件"><a href="#本文用到的文件" class="header-anchor">#</a> 本文用到的文件</h4> <blockquote><p>src/isomorphic/React.js  <code>React.createElement</code>入口83行</p></blockquote> <blockquote><p>src/isomorphic/classic/element/ReactElement.js <code>ReactElement.createElement()</code>具体实现 181行</p></blockquote> <blockquote><p>src/renderers/dom/ReactDOM.js: <code>ReactDOM.render()</code>的入口</p></blockquote> <p>=========================</p> <p>React分为react-dom和react的原因是React-Native的出现，它可以实现跨平台实现相同的组件。</p> <p>react包包含了React.createElement、 .createClass、 .Component、 .PropTypes、.Children以及其他的描述元素和组件的类。</p> <p>react-dom包包含了ReactDOM.render、.unmountComponentAtNode和.findDOMNode等</p> <p>ReactDOM.render是React的最基本方法用于将模板转为HTML语言，并插入指定的DOM节点。它可以将一个React元素呈现在指定的DOM container中，并返回对组件的引用对象。</p> <h5 id="从jsx到react-createelement"><a href="#从jsx到react-createelement" class="header-anchor">#</a> 从JSX到React.createElement()</h5> <p>JSX是在编译的时候由Babel转译成React.createElement()调用的。我们可以使用<a href="https://babeljs.io/repl" target="_blank" rel="noopener noreferrer">https://babeljs.io/repl<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>查看</p> <div class="language-bash extra-class"><pre class="language-bash"><code>// jsx语法
+<span class="token function">import</span> React from <span class="token string">'react'</span>
+
+ReactDOM.render<span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>h1 <span class="token assign-left variable">style</span><span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>color:<span class="token string">&quot;blue&quot;</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>hello world<span class="token operator">&lt;</span>/h<span class="token operator"><span class="token file-descriptor important">1</span>&gt;</span>,
+  document.getElementById<span class="token punctuation">(</span><span class="token string">&quot;root&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>转义后</p> <div class="language-bash extra-class"><pre class="language-bash"><code>// babel转义 
+<span class="token string">&quot;use strict&quot;</span><span class="token punctuation">;</span>
+
+<span class="token function">import</span> React from <span class="token string">'react'</span>
+
+ReactDOM.render<span class="token punctuation">(</span>React.createElement<span class="token punctuation">(</span>
+  <span class="token string">&quot;h1&quot;</span>,
+  <span class="token punctuation">{</span> style: <span class="token punctuation">{</span> color: <span class="token string">&quot;blue&quot;</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span>,
+  <span class="token string">&quot;hello world&quot;</span>
+<span class="token punctuation">)</span>, document.getElementById<span class="token punctuation">(</span><span class="token string">&quot;root&quot;</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+
+</code></pre></div><blockquote><p>React.createElement() - 方法只是做了简单的参数修正，返回一个ReactElement实例对象</p></blockquote> <div class="language- extra-class"><pre><code>&gt;&gt; 1. React.createElement(type, config, children) 仅仅是 ReactElement.createElement()的一个别名; `src/isomorphic/React.js 22行`
+
+&gt;&gt; ReactElement.createElement(type, config, children) 做了三件事： `src/isomorphic/classic/element/ReactElement.js 181行`
+	1) 把 config里的数据一项一项拷入props, 
+	2) 拷贝 children 到 props.children， 
+	3) 拷贝 type.defaultProps 到 props
+
+&gt;&gt; 然后 ReactElement(type,…, props) 会把 type 和 props 原样透传给 ReactElement 的构造函数，并返回新构造的实例. `src/isomorphic/classic/element/ReactElement.js 115行`
+</code></pre></div><p>这个新构建的ReactElement一会会在ReactMount.instantiateReactComponent() 函数中用到。因为下一步也会构建一个ReactElement我们先把这一步生成的对象命名为ReactElement[1]。</p> <h2 id="react渲染机制"><a href="#react渲染机制" class="header-anchor">#</a> React渲染机制</h2> <div class="language-js extra-class"><pre class="language-js"><code>
+<span class="token keyword">class</span> <span class="token class-name">Form</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+        <span class="token operator">&lt;</span>form<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">&quot;text&quot;</span><span class="token operator">/</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>form<span class="token operator">&gt;</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+ReactDOM<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span> <span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">&quot;test&quot;</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>p<span class="token operator">&gt;</span>请输入你的信息<span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>Form<span class="token operator">/</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token punctuation">)</span><span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'example'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre></div><p>从ReactDOM入口开始，找到ReactDOM.js文件</p> <div class="language-js extra-class"><div class="highlight-lines"><br><br><div class="highlighted"> </div><br><br><br><br><br><br><br><br><br><br><br><br><br><div class="highlighted"> </div><br><br><br><br><br><br><br><br><br></div><pre class="language-js"><code><span class="token keyword">var</span> ReactDOMComponentTree <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'ReactDOMComponentTree'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> ReactDefaultInjection <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'ReactDefaultInjection'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> ReactMount <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'ReactMount'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> ReactReconciler <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'ReactReconciler'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> ReactUpdates <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'ReactUpdates'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> ReactVersion <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'ReactVersion'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> findDOMNode <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'findDOMNode'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> getHostComponentFromComposite <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'getHostComponentFromComposite'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> renderSubtreeIntoContainer <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'renderSubtreeIntoContainer'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> warning <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'warning'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+ReactDefaultInjection<span class="token punctuation">.</span><span class="token function">inject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> ReactDOM <span class="token operator">=</span> <span class="token punctuation">{</span>
+  findDOMNode<span class="token operator">:</span> findDOMNode<span class="token punctuation">,</span>
+  render<span class="token operator">:</span> ReactMount<span class="token punctuation">.</span>render<span class="token punctuation">,</span>
+  unmountComponentAtNode<span class="token operator">:</span> ReactMount<span class="token punctuation">.</span>unmountComponentAtNode<span class="token punctuation">,</span>
+  version<span class="token operator">:</span> ReactVersion<span class="token punctuation">,</span>
+
+  <span class="token comment">/* eslint-disable camelcase */</span>
+  unstable_batchedUpdates<span class="token operator">:</span> ReactUpdates<span class="token punctuation">.</span>batchedUpdates<span class="token punctuation">,</span>
+  unstable_renderSubtreeIntoContainer<span class="token operator">:</span> renderSubtreeIntoContainer<span class="token punctuation">,</span>
+  <span class="token comment">/* eslint-enable camelcase */</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>ReactDOM.render()方法来自ReactMount文件的render方法：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function-variable function">render</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">nextElement<span class="token punctuation">,</span> container<span class="token punctuation">,</span> callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token comment">/**入口render方法
+   * @param {ReactElement} nextElement 要插入到DOM中的组件
+   * @param {DOMElement} container 要插入到的容器
+   * @param {?function} callback 回调
+   * @return {ReactComponent} Component instance rendered in `container`.返回ReactComponent
+   */</span>
+    <span class="token keyword">return</span> ReactMount<span class="token punctuation">.</span><span class="token function">_renderSubtreeIntoContainer</span><span class="token punctuation">(</span>
+      <span class="token keyword">null</span><span class="token punctuation">,</span>
+      nextElement<span class="token punctuation">,</span>
+      container<span class="token punctuation">,</span>
+      callback<span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre></div><p>Render方法返回的是当前文件下的_renderSubtreeIntoContainer方法，大白话（将子树呈现到容器中），顾名思义，
+它的作用是将子树nextElement注入到指定的container中，并调用其回调方法_renderSubtreeIntoContainer方法主要完成以下一个功能：</p> <p>1、调用React.createElement生成待插入节点的虚拟DOM的实例对象
+2、与之前的component比较，如果是初次渲染直接将虚拟DOM转换为真实DOM
+3、将真实的组件写到对应的container节点中</p> <div class="language-js extra-class"><pre class="language-js"><code>  <span class="token function-variable function">_renderSubtreeIntoContainer</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>
+    <span class="token parameter">parentComponent<span class="token punctuation">,</span>
+    nextElement<span class="token punctuation">,</span>
+    container<span class="token punctuation">,</span>
+    callback<span class="token punctuation">,</span></span>
+  <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    ReactUpdateQueue<span class="token punctuation">.</span><span class="token function">validateCallback</span><span class="token punctuation">(</span>callback<span class="token punctuation">,</span> <span class="token string">'ReactDOM.render'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">var</span> nextWrappedElement <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span>TopLevelWrapper<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      child<span class="token operator">:</span> nextElement<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">var</span> nextContext<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>parentComponent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> parentInst <span class="token operator">=</span> ReactInstanceMap<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>parentComponent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      nextContext <span class="token operator">=</span> parentInst<span class="token punctuation">.</span><span class="token function">_processChildContext</span><span class="token punctuation">(</span>parentInst<span class="token punctuation">.</span>_context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      nextContext <span class="token operator">=</span> emptyObject<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+	<span class="token comment">// 获取要插入到的容器的前一次的ReactComponent，这是为了做DOM diff</span>
+    <span class="token keyword">var</span> prevComponent <span class="token operator">=</span> <span class="token function">getTopLevelWrapperInContainer</span><span class="token punctuation">(</span>container<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>prevComponent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> prevWrappedElement <span class="token operator">=</span> prevComponent<span class="token punctuation">.</span>_currentElement<span class="token punctuation">;</span>
+      <span class="token keyword">var</span> prevElement <span class="token operator">=</span> prevWrappedElement<span class="token punctuation">.</span>props<span class="token punctuation">.</span>child<span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">shouldUpdateReactComponent</span><span class="token punctuation">(</span>prevElement<span class="token punctuation">,</span> nextElement<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> publicInst <span class="token operator">=</span> prevComponent<span class="token punctuation">.</span>_renderedComponent<span class="token punctuation">.</span><span class="token function">getPublicInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> updatedCallback <span class="token operator">=</span>
+          callback <span class="token operator">&amp;&amp;</span>
+          <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">callback</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>publicInst<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        ReactMount<span class="token punctuation">.</span><span class="token function">_updateRootComponent</span><span class="token punctuation">(</span>
+          prevComponent<span class="token punctuation">,</span>
+          nextWrappedElement<span class="token punctuation">,</span>
+          nextContext<span class="token punctuation">,</span>
+          container<span class="token punctuation">,</span>
+          updatedCallback<span class="token punctuation">,</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> publicInst<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        ReactMount<span class="token punctuation">.</span><span class="token function">unmountComponentAtNode</span><span class="token punctuation">(</span>container<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">var</span> reactRootElement <span class="token operator">=</span> <span class="token function">getReactRootElementInContainer</span><span class="token punctuation">(</span>container<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> containerHasReactMarkup <span class="token operator">=</span>
+      reactRootElement <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token operator">!</span><span class="token function">internalGetID</span><span class="token punctuation">(</span>reactRootElement<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> containerHasNonRootReactChild <span class="token operator">=</span> <span class="token function">hasNonRootReactChild</span><span class="token punctuation">(</span>container<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>__DEV__<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">warning</span><span class="token punctuation">(</span>
+        <span class="token operator">!</span>containerHasNonRootReactChild<span class="token punctuation">,</span>
+        <span class="token string">'render(...): Replacing React-rendered children with a new root '</span> <span class="token operator">+</span>
+          <span class="token string">'component. If you intended to update the children of this node, '</span> <span class="token operator">+</span>
+          <span class="token string">'you should instead have the existing children update their state '</span> <span class="token operator">+</span>
+          <span class="token string">'and render the new components instead of calling ReactDOM.render.'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>containerHasReactMarkup <span class="token operator">||</span> reactRootElement<span class="token punctuation">.</span>nextSibling<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> rootElementSibling <span class="token operator">=</span> reactRootElement<span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>rootElementSibling<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">internalGetID</span><span class="token punctuation">(</span>rootElementSibling<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">warning</span><span class="token punctuation">(</span>
+              <span class="token boolean">false</span><span class="token punctuation">,</span>
+              <span class="token string">'render(): Target node has markup rendered by React, but there '</span> <span class="token operator">+</span>
+                <span class="token string">'are unrelated nodes as well. This is most commonly caused by '</span> <span class="token operator">+</span>
+                <span class="token string">'white-space inserted around server-rendered markup.'</span><span class="token punctuation">,</span>
+            <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+          rootElementSibling <span class="token operator">=</span> rootElementSibling<span class="token punctuation">.</span>nextSibling<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">var</span> shouldReuseMarkup <span class="token operator">=</span>
+      containerHasReactMarkup <span class="token operator">&amp;&amp;</span>
+      <span class="token operator">!</span>prevComponent <span class="token operator">&amp;&amp;</span>
+      <span class="token operator">!</span>containerHasNonRootReactChild<span class="token punctuation">;</span>
+    <span class="token keyword">var</span> component <span class="token operator">=</span> ReactMount<span class="token punctuation">.</span><span class="token function">_renderNewRootComponent</span><span class="token punctuation">(</span>
+      nextWrappedElement<span class="token punctuation">,</span>
+      container<span class="token punctuation">,</span>
+      shouldReuseMarkup<span class="token punctuation">,</span>
+      nextContext<span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token punctuation">.</span>_renderedComponent<span class="token punctuation">.</span><span class="token function">getPublicInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>callback<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">callback</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>component<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> component<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+</code></pre></div><h4 id="reactdom-render-开始渲染"><a href="#reactdom-render-开始渲染" class="header-anchor">#</a> ReactDom.render() -  开始渲染</h4> <ul><li><p>ReactDom.render 执行的是 ReactMount.render <code>src\renderers\dom\ReactDOM.js 30行</code></p></li> <li><p>执行 ReactMount._renderSubtreeIntoContainer <code>src\renderers\dom\client\ReactMount.js 567行</code></p> <ul><li><p>检测ReactELement[1]合法性</p></li> <li><p>检擦container页面容器是否已经被渲染过react组件</p></li> <li><p>调用renderNewRootComponent渲染（将新组件呈现到dom中）</p></li> <li><p>调用instantiateReactComponent这是初始化组件的入口函数，</p></li></ul></li> <li><p>执行instantiateReactComponent  <code>src\renderers\shared\stack\reconciler\instantiateReactComponent.js</code></p> <ul><li>它通过判断node类型来区分不同组件入口（【node类型null】空组件、【node类型对象】DOM标签组件（ReactDOMComponent）或自定义组件（ReactCompositeComponent）、【node类型字符串或数字】文本组件（ReactDOMTextComponent）、【node其他情况】不做处理）</li></ul></li></ul> <h2 id="生命周期"><a href="#生命周期" class="header-anchor">#</a> 生命周期</h2> <p>组件的生命主要包括3个阶段： 挂载、更新、卸载，React 16开始还添加了错误处理。</p> <h5 id="v15"><a href="#v15" class="header-anchor">#</a> <center>v15</center></h5> <p><img src="/assets/img/react-life-3.d53bba57.jpg" alt="v15"></p> <h5 id="v16"><a href="#v16" class="header-anchor">#</a> <center>v16</center></h5> <p><img src="/assets/img/react-life-1.30b5ab07.jpg" alt="v16"></p> <h3 id="constructor"><a href="#constructor" class="header-anchor">#</a> constructor()</h3> <p>React借用class类的constructor充当初始化钩子。</p> <div class="language-js extra-class"><div class="highlight-lines"><br><br><br><div class="highlighted"> </div><br><br><br><br><br><div class="highlighted"> </div><br><br><br><br></div><pre class="language-js"><code><span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> Component <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Test</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+	<span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">*</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">*</span>
+		<span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+    state <span class="token operator">=</span> <span class="token punctuation">{</span>   <span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">*</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">*</span>
+        name<span class="token operator">:</span> <span class="token string">'biu'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="题外"><a href="#题外" class="header-anchor">#</a> 题外</h4> <p>为什么可以写成[1] 或者 [2]</p> <p>官网： 如果不初始化状态 state，也不绑定方法 .bind()，则不需要为react组件实现构造函数。</p> <ul><li><p>Class基本语法</p> <ul><li>实例属性的新写法
+<ul><li>实例属性除了在constructor()方法里面定义，也可以直接写在类的最顶层。</li></ul> <ul><li>这种新写法的好处是，所有实例属性都定义在类的头部，看上去比较整齐，一眼就能看出这个类有哪些实例属性。</li></ul></li> <li>静态属性
+<ul><li>静态属性指的是 Class 本身的属性，即Class.propName，而不是定义在实例对象（this）上的属性。</li></ul></li></ul></li> <li><p>Class继承</p> <ul><li>constructor
+<ul><li>子类必须在constructor方法中调用super方法，否则新建实例时会报错
+<ul><li>这是因为子类自己的this对象，必须先通过父类的构造函数完成塑造，得到与父类同样的实例属性和方法，然后再对其进行加工，加上子类自己的实例属性和方法。如果不调用super方法，子类就得不到this对象。</li></ul></li></ul> <ul><li>如果子类没有定义constructor方法，这个方法会被默认添加。也就是说，不管有没有显式定义，任何一个子类都有constructor方法。</li> <li>ES5 的继承，实质是先创造子类的实例对象this，然后再将父类的方法添加到this上面（Parent.apply(this)、.call()）。</li> <li>ES6 的继承机制完全不同，实质是先将父类实例对象的属性和方法，加到this上面（所以必须先调用super方法），然后再用子类的构造函数修改this。</li></ul></li></ul></li></ul> <h3 id="componentwillmount"><a href="#componentwillmount" class="header-anchor">#</a> componentWillMount()</h3> <p>实例之后，虚拟dom构建真实dom之前触发的</p> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>初始化this.state应该在constructor生命周期钩子中完成，请求数据应该在componentDidMount生命周期钩子中完成，所以它不仅被废弃了，连继任者都没有。</p></div> <h5 id="static-getderivedstatefromprops-props-state"><a href="#static-getderivedstatefromprops-props-state" class="header-anchor">#</a> static getDerivedStateFromProps(props, state)</h5> <p>字面意思 从props中获取数据映射到state</p> <p>首先，这是一个静态方法生命周期钩子。</p> <p>也就是说，定义的时候得在方法前加一个static关键字，或者直接挂载到class类上。</p> <p>这个函数不能通过this访问到class属性，而是通过参数提供的nextprops、prevstate来进行判断，根据新传入的props来映射到state，如果不需要影响的你的state，必须返回一个null值</p> <div class="language-bash extra-class"><pre class="language-bash"><code>
+static getDerivedStateFromProps<span class="token punctuation">(</span>nextProps, prevState<span class="token punctuation">)</span><span class="token punctuation">{</span>
+	const <span class="token punctuation">{</span> type<span class="token punctuation">}</span> <span class="token operator">=</span> nextProps<span class="token punctuation">;</span>
+	// 当传入的type发生变化时候更新state
+	if<span class="token punctuation">(</span>type <span class="token operator">!=</span><span class="token operator">=</span> prevState.type<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token builtin class-name">return</span> <span class="token punctuation">{</span>
+			<span class="token builtin class-name">type</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+	// 否则，对于state不进行任何操作
+	<span class="token builtin class-name">return</span> null<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>这个生命周期函数威力替代<code>componentWillReceiveProps</code></p> <h3 id="render"><a href="#render" class="header-anchor">#</a> render()</h3> <p>作为一个组件，最核心的功能就是把元素挂载到DOM上，所以render生命周期钩子是一定会用到的。</p> <p>return 一个React元素（描述组件，即UI），不负责组件实际渲染工作，之后由React自身根据此元素去渲染出页面DOM</p> <h3 id="componentdidmount"><a href="#componentdidmount" class="header-anchor">#</a> componentDidMount()</h3> <p>这是组件挂载到DOM之后的生命周期钩子。</p> <p>这可能是除了render之外最重要的生命周期钩子，因为这时候组件的各方面都准备就绪，天地任你闯</p> <p>componentDidMount是通过一个队列来维护的，因为队列是先进先出的.而最里层的组件是最先执行！ transaction</p> <p>这里有涉及到了<code>事务和队列</code> 以后再说</p> <h3 id="componentwillreceiveprops-nextprops"><a href="#componentwillreceiveprops-nextprops" class="header-anchor">#</a> componentWillReceiveProps(nextProps)</h3> <p><code>componentWillReceiveProps</code>生命周期钩子只有一个参数，更新后的props。</p> <p>该声明周期函数可能在两种情况下被触发：</p> <blockquote><p>组件接收到了新的属性。</p></blockquote> <blockquote><p>组件没有收到新的属性，但是由于父组件重新渲染导致当前组件也被重新渲染。</p></blockquote> <p>初始化时并不会触发该生命周期钩子。</p> <p>所以在此方法中根据nextProps和this.props来查明重传的props是否改变，如果改变了要执行啥，比如根据新的props调用this.setState出发当前组件的重新render</p> <h6 id="延伸-关于重复渲染的问题"><a href="#延伸-关于重复渲染的问题" class="header-anchor">#</a> 延伸 关于重复渲染的问题</h6> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 第一种 class B extends React.PureComponent{</span>
+
+<span class="token keyword">class</span> <span class="token class-name">B</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span><span class="token punctuation">{</span>
+	<span class="token comment">// 第二种</span>
+	<span class="token comment">/*
+		state = {
+			p: ''
+		}
+		componentWillReceiveProps(nextProps){
+			this.setState({
+				p: nextProps.p
+			})
+		}
+		shouldComponentUpdate(nextProps, nextState){
+			// nextSTate 返回当前组件state
+			if(nextProps.p === nextSTate.p){
+				return false;
+			}else{
+				return true;
+			}
+		}
+	*/</span>
+	
+	<span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token punctuation">(</span>
+			<span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>www<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+		<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">A</span> extend React<span class="token punctuation">.</span>Component<span class="token punctuation">{</span>
+	state <span class="token operator">=</span> <span class="token punctuation">{</span>
+		p<span class="token operator">:</span> <span class="token string">'111'</span>
+	<span class="token punctuation">}</span>
+	<span class="token function">vv</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+			p<span class="token operator">:</span> <span class="token string">'111'</span>
+		<span class="token punctuation">}</span><span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+	<span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token punctuation">[</span>
+			<span class="token operator">&lt;</span>div onClick <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">vv</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>onclick<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+			<span class="token operator">&lt;</span><span class="token constant">B</span> p<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>p<span class="token punctuation">}</span><span class="token operator">/</span><span class="token operator">&gt;</span>
+		<span class="token punctuation">]</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>我们点击 父组件的onclick时候，不管p传过去的值修没修改，子组件都会render</p> <p>解决方法如上</p> <h3 id="shouldcomponentupdate-nextprops-nextstate"><a href="#shouldcomponentupdate-nextprops-nextstate" class="header-anchor">#</a> shouldComponentUpdate(nextProps, nextState)</h3> <p>这个生命周期钩子是一个开关，判断是否需要更新，主要用来优化性能。</p> <p>有一个例外，如果开发者调用this.forceUpdate强制更新，React组件会无视这个钩子。</p> <p>此方法通过比较nextProps，nextState及当前组件的this.props，this.state，返回true时当前组件将继续执行更新过程，返回false则当前组件更新停止，以此可用来减少组件的不必要渲染，优化组件性能。</p> <h3 id="componentwillupdate-nextprops-nextstate"><a href="#componentwillupdate-nextprops-nextstate" class="header-anchor">#</a> componentWillUpdate(nextProps, nextState)</h3> <p><code>shouldComponentUpdate</code>生命周期钩子返回true，或者调用<code>this.forceUpdate</code>之后，会立即执行该生命周期钩子。</p> <p>要特别注意，<code>componentWillUpdate</code>生命周期钩子每次更新前都会执行，所以在这里调用<code>this.setState</code>非常危险，有可能会没完没了。</p> <h3 id="getsnapshotbeforeupdate-prevprops-prevstate"><a href="#getsnapshotbeforeupdate-prevprops-prevstate" class="header-anchor">#</a> getSnapshotBeforeUpdate(prevProps, prevState)</h3> <p>顾名思义，保存状态快照用的。</p> <p>它会在组件即将挂载时调用，注意，是即将挂载。它甚至调用的比render还晚，由此可见render并没有完成挂载操作，而是进行构建抽象UI的工作。getSnapshotBeforeUpdate执行完就会立即调用componentDidUpdate生命周期钩子。</p> <h3 id="componentdidupdate-nextprops-nextstate-snapshot"><a href="#componentdidupdate-nextprops-nextstate-snapshot" class="header-anchor">#</a> componentDidUpdate(nextProps, nextState, snapshot)</h3> <p>这是组件更新之后触发的生命周期钩子。</p> <p>搭配getSnapshotBeforeUpdate生命周期钩子使用的时候，第三个参数是getSnapshotBeforeUpdate的返回值。</p> <p>同样的，componentDidUpdate生命周期钩子每次更新后都会执行，所以在这里调用this.setState也非常危险，有可能会没完没了。</p> <h3 id="componentwillunmount"><a href="#componentwillunmount" class="header-anchor">#</a> componentWillUnmount()</h3> <p>当组件需要从DOM中移除时, 即会触发这个钩子函数.</p> <p>React的最佳实践是，组件中用到的事件监听器、订阅器、定时器都要在这里销毁。</p> <p>当然我说的事件监听器指的是这种：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">componentDidMount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>因为下面这种React会自动销毁，不劳烦开发者了。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">render</span><span class="token punctuation">(</span>
+	<span class="token keyword">return</span> <span class="token punctuation">(</span>
+    	<span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>handle<span class="token punctuation">}</span><span class="token operator">&gt;</span>click<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">)</span>
+</code></pre></div><h3 id="componentdidcatch-error-info"><a href="#componentdidcatch-error-info" class="header-anchor">#</a> componentDidCatch(error, info)</h3> <p>它主要用来捕获错误并进行相应处理，所以它的用法也比较特殊。</p> <p>定制一个只有componentDidCatch生命周期钩子的ErrorBoundary组件，它只做一件事：如果捕获到错误，则显示错误提示，如果没有捕获到错误，则显示子组件。</p> <p>将需要捕获错误的组件作为ErrorBoundary的子组件渲染，一旦子组件抛出错误，整个应用依然不会崩溃，而是被ErrorBoundary捕获。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/blog/" class="prev router-link-active">
+        我是博客列表页
+      </a></span> <span class="next"><a href="/blog/" class="router-link-active">
+        我是博客列表页
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.31ad6def.js" defer></script><script src="/assets/js/2.402b875a.js" defer></script><script src="/assets/js/6.5cab89aa.js" defer></script>
+  </body>
+</html>

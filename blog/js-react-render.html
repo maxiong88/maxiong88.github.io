@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>react render | 熊大的理想家</title>
+    <meta name="description" content="ReactDOM.render、render">
+    <meta name="generator" content="VuePress 1.3.1">
+    <link rel="icon" href="/icons/favicon.ico">
+    
+    <link rel="preload" href="/assets/css/0.styles.50f4f214.css" as="style"><link rel="preload" href="/assets/js/app.31ad6def.js" as="script"><link rel="preload" href="/assets/js/2.402b875a.js" as="script"><link rel="preload" href="/assets/js/47.04493fe4.js" as="script"><link rel="prefetch" href="/assets/js/10.a5c60306.js"><link rel="prefetch" href="/assets/js/11.162fe585.js"><link rel="prefetch" href="/assets/js/12.c63bb013.js"><link rel="prefetch" href="/assets/js/13.5535dce1.js"><link rel="prefetch" href="/assets/js/14.ede9207e.js"><link rel="prefetch" href="/assets/js/15.64525aa8.js"><link rel="prefetch" href="/assets/js/16.4c4f43ef.js"><link rel="prefetch" href="/assets/js/17.02620db2.js"><link rel="prefetch" href="/assets/js/18.ed2442f6.js"><link rel="prefetch" href="/assets/js/19.60103380.js"><link rel="prefetch" href="/assets/js/20.eeb4dec5.js"><link rel="prefetch" href="/assets/js/21.6ccd03aa.js"><link rel="prefetch" href="/assets/js/22.9712c3da.js"><link rel="prefetch" href="/assets/js/23.427bd783.js"><link rel="prefetch" href="/assets/js/24.806f7b5e.js"><link rel="prefetch" href="/assets/js/25.92bf1841.js"><link rel="prefetch" href="/assets/js/26.022d29b9.js"><link rel="prefetch" href="/assets/js/27.ea494720.js"><link rel="prefetch" href="/assets/js/28.2a4b77c4.js"><link rel="prefetch" href="/assets/js/29.f104b0e7.js"><link rel="prefetch" href="/assets/js/3.2692bef8.js"><link rel="prefetch" href="/assets/js/30.d1441ead.js"><link rel="prefetch" href="/assets/js/31.1bd3dd67.js"><link rel="prefetch" href="/assets/js/32.86fc5bd8.js"><link rel="prefetch" href="/assets/js/33.4066404f.js"><link rel="prefetch" href="/assets/js/34.f8b971f6.js"><link rel="prefetch" href="/assets/js/35.2039d596.js"><link rel="prefetch" href="/assets/js/36.28c245a2.js"><link rel="prefetch" href="/assets/js/37.4542ca60.js"><link rel="prefetch" href="/assets/js/38.7060884d.js"><link rel="prefetch" href="/assets/js/39.cbf6e3b3.js"><link rel="prefetch" href="/assets/js/4.683aec4b.js"><link rel="prefetch" href="/assets/js/40.b86f780d.js"><link rel="prefetch" href="/assets/js/41.cbec82e6.js"><link rel="prefetch" href="/assets/js/42.883c94fb.js"><link rel="prefetch" href="/assets/js/43.dded0337.js"><link rel="prefetch" href="/assets/js/44.73d72a16.js"><link rel="prefetch" href="/assets/js/45.ae66d107.js"><link rel="prefetch" href="/assets/js/46.7cbcd7cc.js"><link rel="prefetch" href="/assets/js/48.00e8b6f3.js"><link rel="prefetch" href="/assets/js/49.3ea416c2.js"><link rel="prefetch" href="/assets/js/5.bf679834.js"><link rel="prefetch" href="/assets/js/50.cc6c6fc9.js"><link rel="prefetch" href="/assets/js/51.78318d8f.js"><link rel="prefetch" href="/assets/js/52.6b9545d5.js"><link rel="prefetch" href="/assets/js/53.9ba62439.js"><link rel="prefetch" href="/assets/js/54.61bea3dd.js"><link rel="prefetch" href="/assets/js/55.bda3ef3f.js"><link rel="prefetch" href="/assets/js/56.c28dd041.js"><link rel="prefetch" href="/assets/js/57.ac593a27.js"><link rel="prefetch" href="/assets/js/58.1078c8f7.js"><link rel="prefetch" href="/assets/js/59.5a253692.js"><link rel="prefetch" href="/assets/js/6.5cab89aa.js"><link rel="prefetch" href="/assets/js/60.d4504388.js"><link rel="prefetch" href="/assets/js/61.1bd9047b.js"><link rel="prefetch" href="/assets/js/62.4a1cf18a.js"><link rel="prefetch" href="/assets/js/63.20f83cdd.js"><link rel="prefetch" href="/assets/js/64.e3d5f47f.js"><link rel="prefetch" href="/assets/js/65.d91b0f58.js"><link rel="prefetch" href="/assets/js/66.695a35f4.js"><link rel="prefetch" href="/assets/js/67.28168e14.js"><link rel="prefetch" href="/assets/js/68.05b3ca2c.js"><link rel="prefetch" href="/assets/js/69.16017d6e.js"><link rel="prefetch" href="/assets/js/7.2f5682ad.js"><link rel="prefetch" href="/assets/js/70.46eeee02.js"><link rel="prefetch" href="/assets/js/71.8564bd97.js"><link rel="prefetch" href="/assets/js/72.7a6b963c.js"><link rel="prefetch" href="/assets/js/73.74f6e720.js"><link rel="prefetch" href="/assets/js/74.2df8cd5a.js"><link rel="prefetch" href="/assets/js/75.4dad2391.js"><link rel="prefetch" href="/assets/js/76.fdb6bdac.js"><link rel="prefetch" href="/assets/js/77.7fec9d99.js"><link rel="prefetch" href="/assets/js/78.672abc99.js"><link rel="prefetch" href="/assets/js/79.5f85bd87.js"><link rel="prefetch" href="/assets/js/8.c99a06ba.js"><link rel="prefetch" href="/assets/js/80.bd894c75.js"><link rel="prefetch" href="/assets/js/81.6f1adf51.js"><link rel="prefetch" href="/assets/js/82.cc0a99a4.js"><link rel="prefetch" href="/assets/js/9.e2c266a1.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.50f4f214.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">熊大的理想家</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客" class="dropdown-title"><span class="title">博客</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/" class="nav-link router-link-active">
+  blog
+</a></li><li class="dropdown-item"><!----> <a href="/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/html/" class="nav-link">
+  html
+</a></li><li class="dropdown-item"><!----> <a href="/ms/" class="nav-link">
+  ms
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="参考" class="dropdown-title"><span class="title">参考</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://www.h5anli.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  H5案例
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="/blog/.html" class="nav-link">
+  vue-weibo
+</a></li><li class="dropdown-item"><!----> <a href="/blog/.html" class="nav-link">
+  vue-cms
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/maxiong88/email-koa-webpack-phantom" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  koa-email
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="/site/q-site.html" class="nav-link">
+  优质站点
+</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  MEME
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客" class="dropdown-title"><span class="title">博客</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/" class="nav-link router-link-active">
+  blog
+</a></li><li class="dropdown-item"><!----> <a href="/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/html/" class="nav-link">
+  html
+</a></li><li class="dropdown-item"><!----> <a href="/ms/" class="nav-link">
+  ms
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="参考" class="dropdown-title"><span class="title">参考</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://www.h5anli.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  H5案例
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="/blog/.html" class="nav-link">
+  vue-weibo
+</a></li><li class="dropdown-item"><!----> <a href="/blog/.html" class="nav-link">
+  vue-cms
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/maxiong88/email-koa-webpack-phantom" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  koa-email
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="/site/q-site.html" class="nav-link">
+  优质站点
+</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  MEME
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>react render</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/js-react-render.html#如果当前容器元素节点类型-等于-默认-9-代表整个文档（dom-树的根节点）。" class="sidebar-link">如果当前容器元素节点类型 等于 默认  9 代表整个文档（DOM 树的根节点）。</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><p>我们通过断点调试
+<code>ReactDOM.render(&lt;App /&gt;, document.getELementById('main'))</code>
+原理</p> <div class="language-js extra-class"><pre class="language-js"><code>
+程序开始 
+
+<span class="token operator">+</span> enableStableConcurrentModeAPIs 启用当前模式
+	<span class="token operator">-</span> 给ReactDOM注入 createRoot 方法
+	<span class="token operator">-</span> 是否存在devtool 、是否是可用的dom、当前窗口是否在一个框架中 <span class="token operator">!</span>foundDevTools <span class="token operator">&amp;&amp;</span> canUseDOM <span class="token operator">&amp;&amp;</span> window<span class="token punctuation">.</span>top顶层窗口 如果窗口本身就是顶层窗口，top属性返回的是对自身的引用。 <span class="token operator">===</span> window<span class="token punctuation">.</span>self是对当前窗口自身的引用
+		<span class="token operator">+</span> 判断浏览器
+		<span class="token operator">+</span> 是否在http服务中
+	<span class="token operator">-</span> 冻结RwactDOM对象，赋值给ReactDOM$<span class="token number">2</span>、ReactDOM$<span class="token number">3</span>、导出reactDom
+
+<span class="token operator">+</span> 执行ReactDOM<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span>函数
+	<span class="token operator">-</span> element 通过ReactElement 封装返回一个新对象，具体属性 方法自己看吧
+	<span class="token operator">-</span> container 容器
+	<span class="token operator">-</span> callback 回调函数
+		
+	<span class="token operator">-</span> 判断容器是否存在
+	<span class="token operator">-</span> container<span class="token punctuation">.</span>_reactHasBeenPassedToCreateRootDEV
+	<span class="token operator">-</span> <span class="token keyword">return</span> legacyRenderSubtreeIntoContainer（<span class="token keyword">null</span><span class="token punctuation">,</span> element<span class="token punctuation">,</span> container<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> callback）
+		<span class="token operator">+</span> topLevelUpdateWarnings
+			<span class="token operator">-</span> 是不是根容器、是不是<span class="token constant">DOM</span>的根节点
+			<span class="token operator">-</span> isRootRenderedBySomeReact 强转boolean 是不是有跟节点呈现 
+			<span class="token operator">-</span> getReactRootElementInContainer（container）
+				<span class="token operator">+</span> 容器不存在返回<span class="token keyword">null</span>
+				<span class="token operator">+</span> 如果是根节点
+					<span class="token operator">-</span> 返回 Document<span class="token punctuation">[</span>代表整个文档（<span class="token constant">DOM</span> 树的根节点）<span class="token punctuation">]</span><span class="token punctuation">.</span>documentELement
+				<span class="token operator">+</span> 如果不是根节点
+					<span class="token operator">-</span> 返回 Element<span class="token punctuation">[</span>代表元素<span class="token punctuation">]</span><span class="token punctuation">.</span>firstChild 
+				<span class="token operator">+</span> 返回一个 根元素或者子节点 如果不存在返回<span class="token keyword">null</span>
+				
+<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token template-punctuation string">`</span></span>` js
+<span class="token comment">// [103] 从节点获取实例 获取当前节点的实例</span>
+<span class="token keyword">function</span> <span class="token function">getInstanceFromNode$1</span><span class="token punctuation">(</span><span class="token parameter">node</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	  <span class="token keyword">var</span> inst <span class="token operator">=</span> node<span class="token punctuation">[</span>internalInstanceKey<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+	  <span class="token keyword">if</span> <span class="token punctuation">(</span>inst<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>inst<span class="token punctuation">.</span>tag <span class="token operator">===</span> HostComponent <span class="token operator">||</span> inst<span class="token punctuation">.</span>tag <span class="token operator">===</span> HostText<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		  <span class="token keyword">return</span> inst<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+		  <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	  <span class="token punctuation">}</span>
+
+	  <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// [101]</span>
+<span class="token keyword">function</span> <span class="token function">getReactRootElementInContainer</span><span class="token punctuation">(</span><span class="token parameter">container</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>container<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>container<span class="token punctuation">.</span>nodeType <span class="token operator">===</span> <span class="token constant">DOCUMENT_NODE</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> container<span class="token punctuation">.</span>documentElement<span class="token punctuation">;</span> <span class="token comment">// 如果是document节点，则返回document的根元素只读属性 html</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> container<span class="token punctuation">.</span>firstChild<span class="token punctuation">;</span> <span class="token comment">// 只读属性返回树中节点的第一个子节点，如果节点是无子节点，则返回 null。</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 根级更新错误警告</span>
+<span class="token function-variable function">topLevelUpdateWarnings</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">topLevelUpdateWarnings</span><span class="token punctuation">(</span><span class="token parameter">container</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// [100]</span>
+	<span class="token comment">// container 容器节点 div#root</span>
+	<span class="token comment">// container._reactRootContainer 默认undefined</span>
+	<span class="token comment">// container.nodeType 节点类型， 1 element节点 、9 document节点</span>
+	<span class="token comment">// 第一次进入是 false</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>container<span class="token punctuation">.</span>_reactRootContainer <span class="token operator">&amp;&amp;</span> container<span class="token punctuation">.</span>nodeType <span class="token operator">!==</span> <span class="token constant">COMMENT_NODE</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	  <span class="token keyword">var</span> hostInstance <span class="token operator">=</span> <span class="token function">findHostInstanceWithNoPortals</span><span class="token punctuation">(</span>container<span class="token punctuation">.</span>_reactRootContainer<span class="token punctuation">.</span>_internalRoot<span class="token punctuation">.</span>current<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	  <span class="token keyword">if</span> <span class="token punctuation">(</span>hostInstance<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token operator">!</span><span class="token punctuation">(</span>hostInstance<span class="token punctuation">.</span>parentNode <span class="token operator">===</span> container<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token function">warningWithoutStack$1</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token string">'render(...): It looks like the React-rendered content of this '</span> <span class="token operator">+</span> <span class="token string">'container was removed without using React. This is not '</span> <span class="token operator">+</span> <span class="token string">'supported and will cause errors. Instead, call '</span> <span class="token operator">+</span> <span class="token string">'ReactDOM.unmountComponentAtNode to empty a container.'</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token keyword">void</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	  <span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+	
+	<span class="token comment">// true </span>
+	<span class="token keyword">var</span> isRootRenderedBySomeReact <span class="token operator">=</span> <span class="token operator">!</span><span class="token operator">!</span>container<span class="token punctuation">.</span>_reactRootContainer<span class="token punctuation">;</span>
+	
+	<span class="token comment">// 返回null，一个只读属性，返回子节点引用或者html根元素或者null</span>
+	<span class="token keyword">var</span> rootEl <span class="token operator">=</span> <span class="token function">getReactRootElementInContainer</span><span class="token punctuation">(</span>container<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [101]</span>
+	
+	<span class="token comment">// 返回false，判断是否有非根节点的子元素</span>
+	<span class="token keyword">var</span> hasNonRootReactChild <span class="token operator">=</span> <span class="token operator">!</span><span class="token operator">!</span><span class="token punctuation">(</span>rootEl <span class="token operator">&amp;&amp;</span> <span class="token function">getInstanceFromNode$1</span><span class="token punctuation">(</span>rootEl<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [102]</span>
+	
+	
+	<span class="token operator">!</span><span class="token punctuation">(</span><span class="token operator">!</span>hasNonRootReactChild <span class="token operator">||</span> isRootRenderedBySomeReact<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token function">warningWithoutStack$1</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token string">'render(...): Replacing React-rendered children with a new root '</span> <span class="token operator">+</span> <span class="token string">'component. If you intended to update the children of this node, '</span> <span class="token operator">+</span> <span class="token string">'you should instead have the existing children update their state '</span> <span class="token operator">+</span> <span class="token string">'and render the new components instead of calling ReactDOM.render.'</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token keyword">void</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	
+	<span class="token comment">// 如果不是element节点类型 或者没有tagname 或者tagname不是body 抛出不提倡组件呈现在document.body中，需要渲染到容器元素中</span>
+	<span class="token operator">!</span><span class="token punctuation">(</span>container<span class="token punctuation">.</span>nodeType <span class="token operator">!==</span> <span class="token constant">ELEMENT_NODE</span> <span class="token operator">||</span> <span class="token operator">!</span>container<span class="token punctuation">.</span>tagName <span class="token operator">||</span> container<span class="token punctuation">.</span>tagName<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token string">'BODY'</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token function">warningWithoutStack$1</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token string">'render(): Rendering components directly into document.body is '</span> <span class="token operator">+</span> <span class="token string">'discouraged, since its children are often manipulated by third-party '</span> <span class="token operator">+</span> <span class="token string">'scripts and browser extensions. This may lead to subtle '</span> <span class="token operator">+</span> <span class="token string">'reconciliation issues. Try rendering into a container element created '</span> <span class="token operator">+</span> <span class="token string">'for your app.'</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token keyword">void</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  
+    <span class="token keyword">function</span> <span class="token function">legacyCreateRootFromDOMContainer</span><span class="token punctuation">(</span><span class="token parameter">container<span class="token punctuation">,</span> forceHydrate</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> shouldHydrate <span class="token operator">=</span> forceHydrate <span class="token operator">||</span> <span class="token function">shouldHydrateDueToLegacyHeuristic</span><span class="token punctuation">(</span>container<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// First clear any existing content.</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>shouldHydrate<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> warned <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> rootSibling <span class="token operator">=</span> <span class="token keyword">void</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>rootSibling <span class="token operator">=</span> container<span class="token punctuation">.</span>lastChild<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>warned <span class="token operator">&amp;&amp;</span> rootSibling<span class="token punctuation">.</span>nodeType <span class="token operator">===</span> <span class="token constant">ELEMENT_NODE</span> <span class="token operator">&amp;&amp;</span> rootSibling<span class="token punctuation">.</span><span class="token function">hasAttribute</span><span class="token punctuation">(</span><span class="token constant">ROOT_ATTRIBUTE_NAME</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              warned <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+              <span class="token function">warningWithoutStack$1</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token string">'render(): Target node has markup rendered by React, but there '</span> <span class="token operator">+</span> <span class="token string">'are unrelated nodes as well. This is most commonly caused by '</span> <span class="token operator">+</span> <span class="token string">'white-space inserted around server-rendered markup.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+          container<span class="token punctuation">.</span><span class="token function">removeChild</span><span class="token punctuation">(</span>rootSibling<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>shouldHydrate <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>forceHydrate <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>warnedAboutHydrateAPI<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          warnedAboutHydrateAPI <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+          <span class="token function">lowPriorityWarning$1</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token string">'render(): Calling ReactDOM.render() to hydrate server-rendered markup '</span> <span class="token operator">+</span> <span class="token string">'will stop working in React v17. Replace the ReactDOM.render() call '</span> <span class="token operator">+</span> <span class="token string">'with ReactDOM.hydrate() if you want React to attach to the server HTML.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span> <span class="token comment">// Legacy roots are not async by default.</span>
+
+      <span class="token keyword">var</span> isConcurrent <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ReactRoot</span><span class="token punctuation">(</span>container<span class="token punctuation">,</span> isConcurrent<span class="token punctuation">,</span> shouldHydrate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>  
+  
+<span class="token keyword">function</span> <span class="token function">legacyRenderSubtreeIntoContainer</span><span class="token punctuation">(</span><span class="token parameter">parentComponent<span class="token punctuation">,</span> children<span class="token punctuation">,</span> container<span class="token punctuation">,</span> forceHydrate<span class="token punctuation">,</span> callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token punctuation">{</span>
+        <span class="token function">topLevelUpdateWarnings</span><span class="token punctuation">(</span>container<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">var</span> root <span class="token operator">=</span> container<span class="token punctuation">.</span>_reactRootContainer<span class="token punctuation">;</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>root<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token comment">// 如果当前容器没有_reactRootContainer属性别初始安装</span>
+        <span class="token comment">// Initial mount</span>
+        root <span class="token operator">=</span> container<span class="token punctuation">.</span>_reactRootContainer <span class="token operator">=</span> <span class="token function">legacyCreateRootFromDOMContainer</span><span class="token punctuation">(</span>container<span class="token punctuation">,</span> forceHydrate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> callback <span class="token operator">===</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">var</span> originalCallback <span class="token operator">=</span> callback<span class="token punctuation">;</span>
+
+          <span class="token function-variable function">callback</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">var</span> instance <span class="token operator">=</span> <span class="token function">getPublicRootInstance</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>_internalRoot<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">originalCallback</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>instance<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token comment">// Initial mount should not be batched.</span>
+
+
+        <span class="token function">unbatchedUpdates</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>parentComponent <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            root<span class="token punctuation">.</span><span class="token function">legacy_renderSubtreeIntoContainer</span><span class="token punctuation">(</span>parentComponent<span class="token punctuation">,</span> children<span class="token punctuation">,</span> callback<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            root<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>children<span class="token punctuation">,</span> callback<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> callback <span class="token operator">===</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">var</span> _originalCallback <span class="token operator">=</span> callback<span class="token punctuation">;</span>
+
+          <span class="token function-variable function">callback</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">var</span> instance <span class="token operator">=</span> <span class="token function">getPublicRootInstance</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>_internalRoot<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token function">_originalCallback</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>instance<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token comment">// Update</span>
+
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>parentComponent <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          root<span class="token punctuation">.</span><span class="token function">legacy_renderSubtreeIntoContainer</span><span class="token punctuation">(</span>parentComponent<span class="token punctuation">,</span> children<span class="token punctuation">,</span> callback<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+          root<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>children<span class="token punctuation">,</span> callback<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">return</span> <span class="token function">getPublicRootInstance</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>_internalRoot<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> 
+</code></pre></div><ul><li><p>ExecutionEnvironment 判断执行环境</p> <ul><li>判断浏览器</li> <li>需要http服务</li> <li>document.documentMode属性返回浏览器渲染文档的模式 只支持IE，如果正式环境小于8，则提示使用浏览器按最新模式渲染 IE=edge</li> <li>expectedFeatures 如果浏览器不支持 提示使用 polyfill</li></ul></li> <li><p>ReactInstrumentation  本地开发 错误代码信息提示</p></li> <li><p>ReactDOMUnknownPropertyHook</p></li> <li><p>ReactDOMNullInputValuePropHook</p></li> <li><p>ReactDOMInvalidARIAHook</p></li> <li><p>ReactDOM.js render函数</p> <ul><li>nextElement React Element</li> <li>container 容器</li> <li>callback 回调函数 <a href="">大家知道callback 回调 是什么吗</a></li> <li>return _renderSubtreeIntoContainer 将子目录呈现到容器中
+<ul><li><p>ReactUpdateQueue 更新列队</p></li> <li><p>parentComponent 第一次为null、nextContext = {} 初始当前作用域</p> <ul><li><a href="http://www.w3school.com.cn/jsref/prop_node_nodetype.asp" target="_blank" rel="noopener noreferrer">HTML DOM nodeType 属性<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <li>container.nodeType
+<ul><li><h2 id="如果当前容器元素节点类型-等于-默认-9-代表整个文档（dom-树的根节点）。"><a href="#如果当前容器元素节点类型-等于-默认-9-代表整个文档（dom-树的根节点）。" class="header-anchor">#</a> 如果当前容器元素节点类型 等于 默认  9 代表整个文档（DOM 树的根节点）。</h2></li></ul></li></ul></li> <li><p>!container || !container.tagName || container.tagName.toUpperCase() !== 'BODY' 不提倡组件呈现在document.body中，需要渲染到容器元素中</p></li></ul></li></ul></li></ul> <div class="language- extra-class"><pre class="language-text"><code></code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/blog/" class="prev router-link-active">
+        我是博客列表页
+      </a></span> <span class="next"><a href="/blog/" class="router-link-active">
+        我是博客列表页
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.31ad6def.js" defer></script><script src="/assets/js/2.402b875a.js" defer></script><script src="/assets/js/47.04493fe4.js" defer></script>
+  </body>
+</html>

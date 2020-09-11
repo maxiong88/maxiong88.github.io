@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>let会被提升吗 | 熊大的理想家</title>
+    <meta name="description" content="let会被提升吗？JavaScript变量的生命周期：为什么let不被提升？">
+    <meta name="generator" content="VuePress 1.3.1">
+    <link rel="icon" href="/icons/favicon.ico">
+    
+    <link rel="preload" href="/assets/css/0.styles.50f4f214.css" as="style"><link rel="preload" href="/assets/js/app.31ad6def.js" as="script"><link rel="preload" href="/assets/js/2.402b875a.js" as="script"><link rel="preload" href="/assets/js/5.bf679834.js" as="script"><link rel="prefetch" href="/assets/js/10.a5c60306.js"><link rel="prefetch" href="/assets/js/11.162fe585.js"><link rel="prefetch" href="/assets/js/12.c63bb013.js"><link rel="prefetch" href="/assets/js/13.5535dce1.js"><link rel="prefetch" href="/assets/js/14.ede9207e.js"><link rel="prefetch" href="/assets/js/15.64525aa8.js"><link rel="prefetch" href="/assets/js/16.4c4f43ef.js"><link rel="prefetch" href="/assets/js/17.02620db2.js"><link rel="prefetch" href="/assets/js/18.ed2442f6.js"><link rel="prefetch" href="/assets/js/19.60103380.js"><link rel="prefetch" href="/assets/js/20.eeb4dec5.js"><link rel="prefetch" href="/assets/js/21.6ccd03aa.js"><link rel="prefetch" href="/assets/js/22.9712c3da.js"><link rel="prefetch" href="/assets/js/23.427bd783.js"><link rel="prefetch" href="/assets/js/24.806f7b5e.js"><link rel="prefetch" href="/assets/js/25.92bf1841.js"><link rel="prefetch" href="/assets/js/26.022d29b9.js"><link rel="prefetch" href="/assets/js/27.ea494720.js"><link rel="prefetch" href="/assets/js/28.2a4b77c4.js"><link rel="prefetch" href="/assets/js/29.f104b0e7.js"><link rel="prefetch" href="/assets/js/3.2692bef8.js"><link rel="prefetch" href="/assets/js/30.d1441ead.js"><link rel="prefetch" href="/assets/js/31.1bd3dd67.js"><link rel="prefetch" href="/assets/js/32.86fc5bd8.js"><link rel="prefetch" href="/assets/js/33.4066404f.js"><link rel="prefetch" href="/assets/js/34.f8b971f6.js"><link rel="prefetch" href="/assets/js/35.2039d596.js"><link rel="prefetch" href="/assets/js/36.28c245a2.js"><link rel="prefetch" href="/assets/js/37.4542ca60.js"><link rel="prefetch" href="/assets/js/38.7060884d.js"><link rel="prefetch" href="/assets/js/39.cbf6e3b3.js"><link rel="prefetch" href="/assets/js/4.683aec4b.js"><link rel="prefetch" href="/assets/js/40.b86f780d.js"><link rel="prefetch" href="/assets/js/41.cbec82e6.js"><link rel="prefetch" href="/assets/js/42.883c94fb.js"><link rel="prefetch" href="/assets/js/43.dded0337.js"><link rel="prefetch" href="/assets/js/44.73d72a16.js"><link rel="prefetch" href="/assets/js/45.ae66d107.js"><link rel="prefetch" href="/assets/js/46.7cbcd7cc.js"><link rel="prefetch" href="/assets/js/47.04493fe4.js"><link rel="prefetch" href="/assets/js/48.00e8b6f3.js"><link rel="prefetch" href="/assets/js/49.3ea416c2.js"><link rel="prefetch" href="/assets/js/50.cc6c6fc9.js"><link rel="prefetch" href="/assets/js/51.78318d8f.js"><link rel="prefetch" href="/assets/js/52.6b9545d5.js"><link rel="prefetch" href="/assets/js/53.9ba62439.js"><link rel="prefetch" href="/assets/js/54.61bea3dd.js"><link rel="prefetch" href="/assets/js/55.bda3ef3f.js"><link rel="prefetch" href="/assets/js/56.c28dd041.js"><link rel="prefetch" href="/assets/js/57.ac593a27.js"><link rel="prefetch" href="/assets/js/58.1078c8f7.js"><link rel="prefetch" href="/assets/js/59.5a253692.js"><link rel="prefetch" href="/assets/js/6.5cab89aa.js"><link rel="prefetch" href="/assets/js/60.d4504388.js"><link rel="prefetch" href="/assets/js/61.1bd9047b.js"><link rel="prefetch" href="/assets/js/62.4a1cf18a.js"><link rel="prefetch" href="/assets/js/63.20f83cdd.js"><link rel="prefetch" href="/assets/js/64.e3d5f47f.js"><link rel="prefetch" href="/assets/js/65.d91b0f58.js"><link rel="prefetch" href="/assets/js/66.695a35f4.js"><link rel="prefetch" href="/assets/js/67.28168e14.js"><link rel="prefetch" href="/assets/js/68.05b3ca2c.js"><link rel="prefetch" href="/assets/js/69.16017d6e.js"><link rel="prefetch" href="/assets/js/7.2f5682ad.js"><link rel="prefetch" href="/assets/js/70.46eeee02.js"><link rel="prefetch" href="/assets/js/71.8564bd97.js"><link rel="prefetch" href="/assets/js/72.7a6b963c.js"><link rel="prefetch" href="/assets/js/73.74f6e720.js"><link rel="prefetch" href="/assets/js/74.2df8cd5a.js"><link rel="prefetch" href="/assets/js/75.4dad2391.js"><link rel="prefetch" href="/assets/js/76.fdb6bdac.js"><link rel="prefetch" href="/assets/js/77.7fec9d99.js"><link rel="prefetch" href="/assets/js/78.672abc99.js"><link rel="prefetch" href="/assets/js/79.5f85bd87.js"><link rel="prefetch" href="/assets/js/8.c99a06ba.js"><link rel="prefetch" href="/assets/js/80.bd894c75.js"><link rel="prefetch" href="/assets/js/81.6f1adf51.js"><link rel="prefetch" href="/assets/js/82.cc0a99a4.js"><link rel="prefetch" href="/assets/js/9.e2c266a1.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.50f4f214.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">熊大的理想家</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客" class="dropdown-title"><span class="title">博客</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/" class="nav-link router-link-active">
+  blog
+</a></li><li class="dropdown-item"><!----> <a href="/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/html/" class="nav-link">
+  html
+</a></li><li class="dropdown-item"><!----> <a href="/ms/" class="nav-link">
+  ms
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="参考" class="dropdown-title"><span class="title">参考</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://www.h5anli.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  H5案例
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="/blog/.html" class="nav-link">
+  vue-weibo
+</a></li><li class="dropdown-item"><!----> <a href="/blog/.html" class="nav-link">
+  vue-cms
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/maxiong88/email-koa-webpack-phantom" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  koa-email
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="/site/q-site.html" class="nav-link">
+  优质站点
+</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  MEME
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客" class="dropdown-title"><span class="title">博客</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/" class="nav-link router-link-active">
+  blog
+</a></li><li class="dropdown-item"><!----> <a href="/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/html/" class="nav-link">
+  html
+</a></li><li class="dropdown-item"><!----> <a href="/ms/" class="nav-link">
+  ms
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="参考" class="dropdown-title"><span class="title">参考</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://www.h5anli.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  H5案例
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="/blog/.html" class="nav-link">
+  vue-weibo
+</a></li><li class="dropdown-item"><!----> <a href="/blog/.html" class="nav-link">
+  vue-cms
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/maxiong88/email-koa-webpack-phantom" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  koa-email
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="/site/q-site.html" class="nav-link">
+  优质站点
+</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  MEME
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>let会被提升吗</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/js-variable-lift.html#初识let" class="sidebar-link">初识let</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/blog/js-variable-lift.html#提升" class="sidebar-link">提升</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/js-variable-lift.html#容易出错的-var-提升" class="sidebar-link">容易出错的 var 提升</a></li><li class="sidebar-sub-header"><a href="/blog/js-variable-lift.html#在底层：变量生命周期" class="sidebar-link">在底层：变量生命周期</a></li><li class="sidebar-sub-header"><a href="/blog/js-variable-lift.html#var-的变量生命周期" class="sidebar-link">var 的变量生命周期</a></li><li class="sidebar-sub-header"><a href="/blog/js-variable-lift.html#function-的变量生命周期" class="sidebar-link">Function 的变量生命周期</a></li><li class="sidebar-sub-header"><a href="/blog/js-variable-lift.html#let-变量生命周期" class="sidebar-link">let 变量生命周期</a></li></ul></li><li><a href="/blog/js-variable-lift.html#结论" class="sidebar-link">结论</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/blog/js-variable-lift.html#思考" class="sidebar-link">思考</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="初识let"><a href="#初识let" class="header-anchor">#</a> 初识let</h2> <p>MDN:</p> <p>let 声明的变量的作用域是块级的；
+let 不能重复声明已存在的变量；
+let 有暂时死区，不会被提升。</p> <h4 id="第一次质疑"><a href="#第一次质疑" class="header-anchor">#</a> 第一次质疑</h4> <p>我第一次质疑我的理解是在遇到 for 循环的时候，代码如下。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 代码段1</span>
+<span class="token keyword">var</span> liList <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">'li'</span><span class="token punctuation">)</span> <span class="token comment">// 共5个li</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span> <span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>liList<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  liList<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function-variable function">onclick</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>大家都知道依次点击 li 会打印出 5 个 5。如果把 var i 改成 let i，就会分别打印出 0、1、2、3、4：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 代码段2</span>
+<span class="token keyword">var</span> liList <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">'li'</span><span class="token punctuation">)</span> <span class="token comment">// 共5个li</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span> <span class="token keyword">let</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>liList<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  liList<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function-variable function">onclick</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>然而，用我之前的知识来理解这个代码是不能自圆其说的。因为代码中依然只声明了一个 i，在 for 循环结束后，i 的值还是会变成 5 才对。</p> <p>于是我去看 MDN 的例子，发现鸡贼的 MDN 巧妙地避开了这个问题，它的例子是这样的：</p> <p><img src="/assets/img/variable-0.d0127cf0.jpg" alt="var "></p> <p>你看 MDN 的例子，在每次循环的时候用 let j 保留的 i 的值，所以在 i 变化的时候，j 并不会变化。而console.log 的是 j，所以不会出现 5 个 5。</p> <p>为什么 MDN 要故意声明一个 j 呢，为什么不直接用 i 呢？</p> <p>我猜测 MDN 为了简化知识，隐瞒了什么。</p> <div class="custom-block tip"><p class="custom-block-title">我说一下我的理解：</p> <p>for( let i = 0; i&lt; 5; i++) 这句话的圆括号之间，有一个隐藏的作用域
+for( let i = 0; i&lt; 5; i++) { 循环体 } 在每次执行循环体之前，JS 引擎会把 i 在循环体的上下文中重新声明及初始化一次。</p></div> <p>也就是说上面的代码段2可以近似近似近似地理解为</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 代码段3</span>
+<span class="token keyword">var</span> liList <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">'li'</span><span class="token punctuation">)</span> <span class="token comment">// 共5个li</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span> <span class="token keyword">let</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>liList<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">let</span> i <span class="token operator">=</span> 隐藏作用域中的i <span class="token comment">// 看这里看这里看这里</span>
+  liList<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function-variable function">onclick</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>那样的话，5 次循环，就会有 5 个不同的 i，console.log 出来的 i 当然也是不同的值。</p> <p>再加上隐藏作用域里的 i，一共有 6 个 i。</p> <p>这就是 MDN 加那句 let j = i 的原因：方便新人理解。</p> <p>总得来说就是 let/const 在与 for 一起用时，会有一个 perIterationBindings 的概念（一种语法糖）。</p> <p>从此之后，我就开始怀疑我对 let 的所有理解了。</p> <h4 id="第二次质疑"><a href="#第二次质疑" class="header-anchor">#</a> 第二次质疑</h4> <p>let 到底有没有提升</p> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>In JavaScript, all binding declarations are instantiated when control flow enters the scope in which they appear.
+Legacy var and function declarations allow access to those bindings before the actual declaration,
+with a &quot;value&quot; of undefined. That legacy behavior is known as &quot;hoisting&quot;.
+let and const binding declarations are also instantiated when control flow enters the scope in which they appear,
+with access prevented until the actual declaration is reached; this is called the Temporal Dead Zone.
+The TDZ exists to prevent the sort of bugs that legacy hoisting can create.</p></div> <p>let 声明一个块级作用域的本地变量</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token keyword">function</span> <span class="token function-name function">varTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  var x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> // 同样的变量<span class="token operator">!</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>true<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    var x <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>  // 同样的变量<span class="token operator">!</span>
+    console.log<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>  // <span class="token number">2</span>
+  <span class="token punctuation">}</span>
+  console.log<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>  // <span class="token number">2</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function-name function">letTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token builtin class-name">let</span> x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> // 不同的变量
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>true<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token builtin class-name">let</span> x <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>  // 不同的变量
+    console.log<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>  // <span class="token number">2</span>
+  <span class="token punctuation">}</span>
+  console.log<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>  // <span class="token number">1</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>let 重复定义一个变量将引起 TypeError</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token keyword">if</span> <span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token builtin class-name">let</span> foo<span class="token punctuation">;</span>
+  <span class="token builtin class-name">let</span> foo<span class="token punctuation">;</span> // TypeError thrown.
+<span class="token punctuation">}</span>
+</code></pre></div><p>let  声明不会被提升到当前执行上下文的顶部</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token keyword">function</span> <span class="token function-name function">do_something</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console.log<span class="token punctuation">(</span>bar<span class="token punctuation">)</span><span class="token punctuation">;</span> // undefined
+  console.log<span class="token punctuation">(</span>foo<span class="token punctuation">)</span><span class="token punctuation">;</span> // ReferenceError: foo is not defined
+  var bar <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token builtin class-name">let</span> foo <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="提升"><a href="#提升" class="header-anchor">#</a> 提升</h2> <p>提升是将变量或函数，移动到作用域顶部的过程，通常用于变量语句var和函数声明function fun() {...}。</p> <p><code>提升</code>并不是描述let变量初始化和可用性的正确术语。</p> <h3 id="容易出错的-var-提升"><a href="#容易出错的-var-提升" class="header-anchor">#</a> 容易出错的 var 提升</h3> <p>以前（现在）我会在当前作用域范围内的任何地方看到变量var varname和函数function funName() {...}声明的奇怪做法：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// var hoisting</span>
+num<span class="token punctuation">;</span>     <span class="token comment">// =&gt; undefined  </span>
+<span class="token keyword">var</span> num<span class="token punctuation">;</span>  
+num <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>  
+num<span class="token punctuation">;</span>     <span class="token comment">// =&gt; 10  </span>
+<span class="token comment">// function hoisting</span>
+getPi<span class="token punctuation">;</span>   <span class="token comment">// =&gt; function getPi() {...}  </span>
+<span class="token function">getPi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; 3.14  </span>
+<span class="token keyword">function</span> <span class="token function">getPi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+  <span class="token keyword">return</span> <span class="token number">3.14</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>num在声明之前访问该变量var num，因此将其计算为undefined。
+该函数function getPi() {...}在文件末尾定义。但是，该函数可以在声明之前调用getPi()，因为它被提升到范围的顶部。</p> <p>这是经典的变量提升 Hoisting</p> <p>事实证明，先使用后声明变量或函数可能会造成混乱。假设您在滚动查看一个大文件，突然看到一个未声明的变量...它是怎么出现在这里，又是在哪里定义的？
+当然一个经验丰富的JavaScript开发者不会用这种方式写代码，但是在成千上万的JavaScript GitHub仓库中很有可能会面对这样的代码。
+即使看着上面给出的代码示例，也很难理解代码中的声明流程。
+自然地，首先声明或描述一个未知的词语，然后才使用它来编写短语。let鼓励遵循这种方式来使用变量</p> <h3 id="在底层：变量生命周期"><a href="#在底层：变量生命周期" class="header-anchor">#</a> 在底层：变量生命周期</h3> <p>当引擎（V8）使用变量时，它们的生命周期包括以下阶段：
+声明阶段正在范围内注册变量。
+初始化阶段是分配内存并为范围中的变量创建绑定。在此步骤中，变量将自动初始化为undefined。
+赋值阶段是为初始化变量赋值。</p> <p>当变量通过声明阶段时，它具有单一化状态 undefined，但未达到初始化。</p> <p><img src="/assets/img/variable-1.ca6269b3.jpg" alt="var-1"></p> <p>请注意，就变量生命周期而言，声明阶段是一般与变量声明不同的术语。
+简而言之，引擎在3个阶段处理变量声明：声明阶段，初始化阶段和分配阶段。</p> <h3 id="var-的变量生命周期"><a href="#var-的变量生命周期" class="header-anchor">#</a> var 的变量生命周期</h3> <p>让我们来看一下引擎是如何处理var变量的：</p> <p><img src="/assets/img/variable-2.112c5cd0.jpg" alt="var-2"></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">multiplyByTen</span><span class="token punctuation">(</span><span class="token parameter">number</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ten<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; undefined</span>
+  <span class="token keyword">var</span> ten<span class="token punctuation">;</span>
+  ten <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ten<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; 10</span>
+  <span class="token keyword">return</span> number <span class="token operator">*</span> ten<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">multiplyByTen</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; 40  </span>
+</code></pre></div><p>当JavaScript开始执行multipleByTen(4)并进入函数作用域时，变量ten在第一个语句之前传递声明和初始化步骤。
+因此，当console.log(ten)记录它时undefined。
+该语句ten = 10指定初始值。分配后，该行console.log(ten)正确记录10值。</p> <h3 id="function-的变量生命周期"><a href="#function-的变量生命周期" class="header-anchor">#</a> Function 的变量生命周期</h3> <p>声明、初始化和分配阶段在封闭函数范围的开头（仅一步骤）同时发生。
+funName()可以在范围的任何位置调用，而不取决于声明语句的位置（甚至可以在末尾）。</p> <p><img src="/assets/img/variable-3.e090afbf.jpg" alt="var-3"></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">sumArray</span><span class="token punctuation">(</span><span class="token parameter">array</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+  <span class="token keyword">return</span> array<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span>sum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">function</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token function">sumArray</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; 23  </span>
+</code></pre></div><p>当JavaScript执行时sumArray([5, 10, 8])，它进入sumArray函数范围。
+在此范围内，在任何语句执行之前，sum通过所有3个阶段：声明，初始化和赋值。
+这种方式甚至array.reduce(sum)可以sum在其声明声明之前使用function sum(a, b) {...}。</p> <h3 id="let-变量生命周期"><a href="#let-变量生命周期" class="header-anchor">#</a> let 变量生命周期</h3> <p>let变量的处理方式不同于var。主要区别在于声明和初始化阶段是分开的。</p> <p><img src="/assets/img/variable-4.c707482b.jpg" alt="var-4"></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">let</span> condition <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>  
+<span class="token keyword">if</span> <span class="token punctuation">(</span>condition<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+  <span class="token comment">// console.log(number); // =&gt; Throws ReferenceError</span>
+  <span class="token keyword">let</span> number<span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; undefined</span>
+  number <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; 5</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>当JavaScript进入if (condition) {...}块范围时，number立即通过声明阶段。
+因为number未初始化状态并且处于暂时死区，所以尝试访问变量会抛出ReferenceError: number is not defined。
+稍后该语句let number进行初始化。现在可以访问变量，但它的值是undefined。
+赋值语句number = 5当然是分配阶段。</p> <p>const和class类型具有相同的生命周期let，除了赋值只能发生一次。</p> <p>在 js种所有的声明<code>var</code>，<code>let</code>，<code>const</code>，<code>function</code>，<code>function*</code>，<code>class</code> 都存在提升 hoisted</p> <p>var/ function/ function*声明和let/ const/ class声明之间的区别是初始化</p> <h2 id="结论"><a href="#结论" class="header-anchor">#</a> 结论</h2> <p>使用 var 声明变量容易出错
+let 使用改进的算法来声明变量，还有块作用域。
+由于let声明和初始化阶段是分离的，因此提升对let变量无效（包括const和class）。
+在初始化之前，变量处于临时死区(TDZ)并且不可访问。</p> <h2 id="思考"><a href="#思考" class="header-anchor">#</a> 思考</h2> <p>1、for(let = (setTimeout(()=&gt;{console.log(i)}, 2333), 0); i&lt;2;i++){} i会输出什么</p> <p>解析</p> <div class="custom-block tip"><p class="custom-block-title">for 语法</p> <p>for (语句 1; 语句 2; 语句 3) {
+被执行的代码块
+}
+语句 1（代码块）开始前执行；
+语句 2 定义运行循环（代码块）的条件；
+语句 3 在循环（代码块）已被执行之后执行；</p></div> <p>执行的顺序为：
+1.第一次循环，即初始化循环。
+首先执行语句1（一般为初始化语句），再执行语句2（一般为条件判断语句），判断语句1是否符合语句2的条件，如果符合，则执行代码块，否则，停止执行，最后执行语句3。
+2.其他循环：
+首先判断前一次语句3的执行结果是否符合执行语句2的条件，如果符合，继续执行代码块，否则停止执行，最后执行语句3。如此往复，直到前一次语句3的执行结果不满足符合执行语句2的条件。</p> <p>总的来说，执行顺序是一致的，先执行条件判断（语句2），再执行代码块，最后执行语句3。如此往复，区别在于条件判断的对象，在第一次判断时，是执行语句1，初始化的对象，后续的判断对象是执行语句3的结果。</p> <div class="custom-block tip"><p class="custom-block-title">逗号表达式</p> <p>逗号表达式，因为原题目中就有使用逗号表达式let i = (setTimeout(()=&gt;console.log(i), 2333), 0);。</p> <p>逗号表达式的一般形式是：表达式1,表达式2,表达式3......表达式n。
+逗号表达式的求解过程是：先计算表达式1的值，再计算表达式2的值，......一直计算到表达式n的值。
+最后整个逗号表达式的值是表达式n的值。</p></div> <div class="language-js extra-class"><pre class="language-js"><code>x<span class="token operator">=</span><span class="token number">8</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">,</span> x<span class="token operator">*</span><span class="token number">4</span>  <span class="token comment">// 整个表达式的值为64，x的值为16</span>
+
+<span class="token punctuation">(</span>x<span class="token operator">=</span><span class="token number">8</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">,</span> x<span class="token operator">*</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">,</span> x<span class="token operator">*</span><span class="token number">2</span> <span class="token comment">// 整个表达式的值为32，x的值为16</span>
+
+x<span class="token operator">=</span><span class="token punctuation">(</span>z<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token comment">// 整个表达式为赋值表达式，它的值为10，z的值为5，x的值为10</span>
+
+x<span class="token operator">=</span>z<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token operator">*</span><span class="token number">2</span> <span class="token comment">// 整个表达式为逗号表达式，它的值为10，x和z的值都为5</span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 打印答案输出 0 1。</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 打印 2, 2</span>
+
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//由于是var，我们现在改写这个for循环，他相等于如下：</span>
+<span class="token keyword">var</span> i<span class="token punctuation">;</span> <span class="token comment">// var变量提升</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//所以，毫无疑问这里的i打印出来的都是2（setTimeout异步会在i循环以后执行）</span>
+
+</code></pre></div><p>从这个例子可以看出，let变量在for循环中，都会被重新赋值一个新的值，
+因此上面代码中，for循环中获取的i值都是一个新的</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//js内部魔法的神奇之处，他会隐式帮你新建一个变量j，于是for循环将会变成如下：</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">let</span> j <span class="token operator">=</span> i<span class="token punctuation">;</span> <span class="token comment">// 所以for中的i其实都是被js引擎挟持了的i，不是我们看到的i</span>
+  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//根据let的块级作用域，setTimeout每次打印出来的j都是当前{}作用域下的j</span>
+
+</code></pre></div><p>人觉得，这个是let的块级作用域相关，每次循环的时候的i都是块级作用域，只对本次循环可见，下次循环不可见。</p> <p>所以，我们以后如果需要再for循环中获取循环项的时候，可以不用立即执行函数来实现了，可以改为let了。</p> <p>根据答案结果我们来倒推一下，首先for循环里第一句话let i = (setTimeout(()=&gt;console.log(i), 2333), 0);会初始化一个 i 且这个 i 是单独存在一个作用域的，这个 i 只代表初始值。当第一句执行结束时这个 i 就封存了，然后在第二句话之前js内部魔法会自动记下这个 i 的值，于是乎for就将改写成如下这个样子：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">for</span><span class="token punctuation">(</span>
+  <span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2333</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> j <span class="token operator">=</span> i<span class="token punctuation">;</span>
+  j <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  j<span class="token operator">++</span>
+<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>也就是说执行到第二句话时，已经是新的一个 i(也就是上述代码的j) 了，
+从而得出for循环内第一句话是一个作用域，后面两句话又在另一个作用域内。
+我们也就可以把i &lt; 2看成for循环的入口，i++看成for循环的出口，每次都是不停地在这个之间循环。</p> <div class="custom-block tip"><p class="custom-block-title">回答问题：</p> <p>for循环的第一个语句是初始化，这个时候的i就是原本的i，初始化为0，
+后面的i都是每次循环新生成的i，与初始化的i无关，所以到2333毫秒以后，i的值任然为0，
+因此打印出来的i就是0了。</p></div> <p><a href="https://www.youtube.com/watch?v=Nzokr6Boeaw&amp;list=PLNYkxOF6rcIAKIQFsNbV0JDws_G_bnNo9" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=Nzokr6Boeaw&amp;list=PLNYkxOF6rcIAKIQFsNbV0JDws_G_bnNo9<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> <a href="https://zhuanlan.zhihu.com/p/28140450" target="_blank" rel="noopener noreferrer">https://zhuanlan.zhihu.com/p/28140450<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> <a href="https://dmitripavlutin.com/variables-lifecycle-and-why-let-is-not-hoisted/" target="_blank" rel="noopener noreferrer">https://dmitripavlutin.com/variables-lifecycle-and-why-let-is-not-hoisted/<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/blog/js-axios-canceltoken.html" class="prev">
+        axios 源码解析--canceltoken 取消请求
+      </a></span> <span class="next"><a href="/blog/" class="router-link-active">
+        我是博客列表页
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.31ad6def.js" defer></script><script src="/assets/js/2.402b875a.js" defer></script><script src="/assets/js/5.bf679834.js" defer></script>
+  </body>
+</html>

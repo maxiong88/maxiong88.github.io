@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>eventLoop 事件循环机制 | 熊大的理想家</title>
+    <meta name="description" content="翻译了一部分">
+    <meta name="generator" content="VuePress 1.3.1">
+    <link rel="icon" href="/icons/favicon.ico">
+    
+    <link rel="preload" href="/assets/css/0.styles.50f4f214.css" as="style"><link rel="preload" href="/assets/js/app.31ad6def.js" as="script"><link rel="preload" href="/assets/js/2.402b875a.js" as="script"><link rel="preload" href="/assets/js/13.5535dce1.js" as="script"><link rel="prefetch" href="/assets/js/10.a5c60306.js"><link rel="prefetch" href="/assets/js/11.162fe585.js"><link rel="prefetch" href="/assets/js/12.c63bb013.js"><link rel="prefetch" href="/assets/js/14.ede9207e.js"><link rel="prefetch" href="/assets/js/15.64525aa8.js"><link rel="prefetch" href="/assets/js/16.4c4f43ef.js"><link rel="prefetch" href="/assets/js/17.02620db2.js"><link rel="prefetch" href="/assets/js/18.ed2442f6.js"><link rel="prefetch" href="/assets/js/19.60103380.js"><link rel="prefetch" href="/assets/js/20.eeb4dec5.js"><link rel="prefetch" href="/assets/js/21.6ccd03aa.js"><link rel="prefetch" href="/assets/js/22.9712c3da.js"><link rel="prefetch" href="/assets/js/23.427bd783.js"><link rel="prefetch" href="/assets/js/24.806f7b5e.js"><link rel="prefetch" href="/assets/js/25.92bf1841.js"><link rel="prefetch" href="/assets/js/26.022d29b9.js"><link rel="prefetch" href="/assets/js/27.ea494720.js"><link rel="prefetch" href="/assets/js/28.2a4b77c4.js"><link rel="prefetch" href="/assets/js/29.f104b0e7.js"><link rel="prefetch" href="/assets/js/3.2692bef8.js"><link rel="prefetch" href="/assets/js/30.d1441ead.js"><link rel="prefetch" href="/assets/js/31.1bd3dd67.js"><link rel="prefetch" href="/assets/js/32.86fc5bd8.js"><link rel="prefetch" href="/assets/js/33.4066404f.js"><link rel="prefetch" href="/assets/js/34.f8b971f6.js"><link rel="prefetch" href="/assets/js/35.2039d596.js"><link rel="prefetch" href="/assets/js/36.28c245a2.js"><link rel="prefetch" href="/assets/js/37.4542ca60.js"><link rel="prefetch" href="/assets/js/38.7060884d.js"><link rel="prefetch" href="/assets/js/39.cbf6e3b3.js"><link rel="prefetch" href="/assets/js/4.683aec4b.js"><link rel="prefetch" href="/assets/js/40.b86f780d.js"><link rel="prefetch" href="/assets/js/41.cbec82e6.js"><link rel="prefetch" href="/assets/js/42.883c94fb.js"><link rel="prefetch" href="/assets/js/43.dded0337.js"><link rel="prefetch" href="/assets/js/44.73d72a16.js"><link rel="prefetch" href="/assets/js/45.ae66d107.js"><link rel="prefetch" href="/assets/js/46.7cbcd7cc.js"><link rel="prefetch" href="/assets/js/47.04493fe4.js"><link rel="prefetch" href="/assets/js/48.00e8b6f3.js"><link rel="prefetch" href="/assets/js/49.3ea416c2.js"><link rel="prefetch" href="/assets/js/5.bf679834.js"><link rel="prefetch" href="/assets/js/50.cc6c6fc9.js"><link rel="prefetch" href="/assets/js/51.78318d8f.js"><link rel="prefetch" href="/assets/js/52.6b9545d5.js"><link rel="prefetch" href="/assets/js/53.9ba62439.js"><link rel="prefetch" href="/assets/js/54.61bea3dd.js"><link rel="prefetch" href="/assets/js/55.bda3ef3f.js"><link rel="prefetch" href="/assets/js/56.c28dd041.js"><link rel="prefetch" href="/assets/js/57.ac593a27.js"><link rel="prefetch" href="/assets/js/58.1078c8f7.js"><link rel="prefetch" href="/assets/js/59.5a253692.js"><link rel="prefetch" href="/assets/js/6.5cab89aa.js"><link rel="prefetch" href="/assets/js/60.d4504388.js"><link rel="prefetch" href="/assets/js/61.1bd9047b.js"><link rel="prefetch" href="/assets/js/62.4a1cf18a.js"><link rel="prefetch" href="/assets/js/63.20f83cdd.js"><link rel="prefetch" href="/assets/js/64.e3d5f47f.js"><link rel="prefetch" href="/assets/js/65.d91b0f58.js"><link rel="prefetch" href="/assets/js/66.695a35f4.js"><link rel="prefetch" href="/assets/js/67.28168e14.js"><link rel="prefetch" href="/assets/js/68.05b3ca2c.js"><link rel="prefetch" href="/assets/js/69.16017d6e.js"><link rel="prefetch" href="/assets/js/7.2f5682ad.js"><link rel="prefetch" href="/assets/js/70.46eeee02.js"><link rel="prefetch" href="/assets/js/71.8564bd97.js"><link rel="prefetch" href="/assets/js/72.7a6b963c.js"><link rel="prefetch" href="/assets/js/73.74f6e720.js"><link rel="prefetch" href="/assets/js/74.2df8cd5a.js"><link rel="prefetch" href="/assets/js/75.4dad2391.js"><link rel="prefetch" href="/assets/js/76.fdb6bdac.js"><link rel="prefetch" href="/assets/js/77.7fec9d99.js"><link rel="prefetch" href="/assets/js/78.672abc99.js"><link rel="prefetch" href="/assets/js/79.5f85bd87.js"><link rel="prefetch" href="/assets/js/8.c99a06ba.js"><link rel="prefetch" href="/assets/js/80.bd894c75.js"><link rel="prefetch" href="/assets/js/81.6f1adf51.js"><link rel="prefetch" href="/assets/js/82.cc0a99a4.js"><link rel="prefetch" href="/assets/js/9.e2c266a1.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.50f4f214.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">熊大的理想家</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客" class="dropdown-title"><span class="title">博客</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/" class="nav-link router-link-active">
+  blog
+</a></li><li class="dropdown-item"><!----> <a href="/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/html/" class="nav-link">
+  html
+</a></li><li class="dropdown-item"><!----> <a href="/ms/" class="nav-link">
+  ms
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="参考" class="dropdown-title"><span class="title">参考</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://www.h5anli.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  H5案例
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="/blog/.html" class="nav-link">
+  vue-weibo
+</a></li><li class="dropdown-item"><!----> <a href="/blog/.html" class="nav-link">
+  vue-cms
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/maxiong88/email-koa-webpack-phantom" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  koa-email
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="/site/q-site.html" class="nav-link">
+  优质站点
+</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  MEME
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客" class="dropdown-title"><span class="title">博客</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/" class="nav-link router-link-active">
+  blog
+</a></li><li class="dropdown-item"><!----> <a href="/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/html/" class="nav-link">
+  html
+</a></li><li class="dropdown-item"><!----> <a href="/ms/" class="nav-link">
+  ms
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="参考" class="dropdown-title"><span class="title">参考</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://www.h5anli.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  H5案例
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="/blog/.html" class="nav-link">
+  vue-weibo
+</a></li><li class="dropdown-item"><!----> <a href="/blog/.html" class="nav-link">
+  vue-cms
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/maxiong88/email-koa-webpack-phantom" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  koa-email
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="/site/q-site.html" class="nav-link">
+  优质站点
+</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  MEME
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>eventLoop 事件循环机制</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/js-eventloop.html#为什么js是单线程" class="sidebar-link">为什么js是单线程</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/blog/js-eventloop.html#任务列队" class="sidebar-link">任务列队</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/js-eventloop.html#io设备" class="sidebar-link">IO设备</a></li></ul></li><li><a href="/blog/js-eventloop.html#eventloop" class="sidebar-link">eventloop</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/blog/js-eventloop.html#nodejs的eventloop" class="sidebar-link">nodejs的eventloop</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><p>事件循环的工作是不断监视消息队列（用于任务）和执行堆栈，并在堆栈为空时将第一个回调函数按行推送到执行堆栈上。</p> <p>在消息队列中创建的所有任务都不相同。有宏观任务和微观任务。</p> <p>宏任务的例子有setInterval、setImmediate、setTimeout、I/O任务。</p> <p>微任务的例子有Promises、process.nextTick。</p> <p>对于每个“事件循环”，宏任务队列中会完成一个宏任务。完成相应的宏任务后，事件循环访问微任务队列，并在转到下一个队列之前完成整个队列。</p> <div class="custom-block tip"><p class="custom-block-title">js 调用栈 (call stack)</p> <p>调用栈是一种栈结构,它用来存储计算机程序执行时候其活跃子程序的信息。</p> <p>调用栈其实就是一种解析器去处理程序的机制，它是栈数据结构。它能追踪子程序的运行状态。
+（1）当脚本要调用一个函数时，解析器把该函数添加到栈中并且执行这个函数。并形成一个栈帧
+（2）任何被这个函数调用的函数会进一步添加到调用栈中，形成另一个栈帧,并且运行到它们被上个程序调用的位置。
+（3）当执行完这个函数后，如果它没有调用其他函数，则它会从调用栈中推出。然后调用栈继续运行其他部门。
+（4) 异步函数的回调函数一般都会被添加到运行队列里面，如settimeout会在响应的时间后把回调函数放入队列中，队列里的函数需要等栈为空时才会被推入栈中执行。如果队列中有其他函数，需要等队列前面的函数被堆入调用栈中之后才会运行。</p></div> <h1 id="event-loops"><a href="#event-loops" class="header-anchor">#</a> Event loops</h1> <h2 id="为什么js是单线程"><a href="#为什么js是单线程" class="header-anchor">#</a> 为什么js是单线程</h2> <p>js是一种单线程编程语言。它一次只能做一件事。浏览器只分配给js一个主线程,用来执行任务</p> <p>这样简化了您的编程方式，而无需担心并发问题。你只需要注意如何编写代码，并避免任何可能阻塞线程的事情。</p> <p>h5的<code>web worker</code>允许js脚本创建多个线程，但子线程完全受主线程控制，且不得操作DOM。</p> <p>幸运的是，浏览器为我们提供了js引擎本身不提供的一些功能：webapis。包括DOMAPI、settimeout、http请求。
+它可以帮助我们创建一些异步的，非阻塞的行为。</p> <p>chrome v8引擎运行时由stack和heap组成，heap用于分配内存、stack用于已进行函数调用</p> <p>浏览器包含：一个<code>call stack</code>[调用栈、调用堆栈、函数调用栈]-》先入先出，一个<code>event loop</code>[事件循环]，一个<code>callback queue</code>[回调列队]，以及一些api和特性[APIS and stuff]</p> <ul><li>webAPI-诸如ajax、settimeout、events等调用，这些都不属于V8引擎，二是由浏览器提供对此支持</li> <li>callBack queue 所有异步回调或事件都将推送到此队列</li> <li>eventloop 在堆栈和队列中查找一个函数，如果堆栈为空，则将内容从回调队列推送到堆栈。</li></ul> <h2 id="任务列队"><a href="#任务列队" class="header-anchor">#</a> 任务列队</h2> <p>单线程模型带来了一些问题，主要是新的任务被加在队列的尾部，只有前面的所有任务运行结束，才会轮到它执行。
+如果有一个任务特别耗时，后面的任务都会停在那里等待，造成浏览器失去响应，又称“假死”</p> <p>如果排队是因为计算量大，CPU忙不过来，倒也算了，但是很多时候CPU是闲着的，因为IO设备（输入输出设备）很慢（比如Ajax操作从网络读取数据），不得不等着结果出来，再往下执行。</p> <p>JavaScript语言的设计者意识到，这时主线程完全可以不管IO设备，挂起处于等待中的任务，先运行排在后面的任务。等到IO设备返回了结果，再回过头，把挂起的任务继续执行下去。
+这种机制就是JavaScript内部采用的Event Loop。</p> <p>任务分为两种 一是同步任务，二是异步任务</p> <ul><li>同步任务（synchronous）同步任务指的是，在主线程上排队执行的任务，只有前一个任务执行完毕，才能执行后一个任务</li> <li>异步任务（asynchronous）异步任务指的是，不进入主线程、而进入&quot;任务队列&quot;（task queue）的任务，只有&quot;任务队列&quot;通知主线程，某个异步任务可以执行了，该任务才会进入主线程执行</li></ul> <p>只要主线程空了，就会去读取&quot;任务队列&quot;，这就是JavaScript的运行机制。这个过程会不断重复。</p> <h3 id="io设备"><a href="#io设备" class="header-anchor">#</a> IO设备</h3> <h2 id="eventloop"><a href="#eventloop" class="header-anchor">#</a> eventloop</h2> <p>在完成整个进程或线程之后，必须将信息返回到主线程；这就是事件循环的作用所在。</p> <p>主线程从&quot;任务队列&quot;中读取事件，这个过程是循环不断的，所以整个的这种运行机制又称为Event Loop（事件循环）。</p> <p><img src="/assets/img/bg2014100802.da078fa3.png" alt="Philip Roberts的演讲"></p> <p>只要栈中的代码执行完毕，主线程就会去读取&quot;任务队列&quot;，依次执行那些事件所对应的回调函数。</p> <p>执行栈中的代码（同步任务），总是在读取&quot;任务队列&quot;（异步任务）之前执行</p> <p>需要注意的是，setTimeout()只是将事件插入了&quot;任务队列&quot;，必须等到当前代码（执行栈）执行完，主线程才会去执行它指定的回调函数。</p> <p>JS是单线程的，它创建了事件循环的概念来异步运行多个任务。事件循环执行消息队列和执行堆栈的持续监视功能。</p> <p>当执行堆栈变空时，事件循环将执行堆栈上的第一个回调函数对齐。</p> <p>一个连续检查调用堆栈是否为空的进程。如果调用堆栈为空，则检查是否有任何函数等待调用。如果是，那么消息队列表中的第一个函数将移动到调用堆栈中，并从调用堆栈中执行它。这整个过程称为“事件循环”。</p> <h2 id="nodejs的eventloop"><a href="#nodejs的eventloop" class="header-anchor">#</a> nodejs的eventloop</h2> <p>Node.js也是单线程的Event Loop，但是它的运行机制不同于浏览器环境。</p> <p>V8引擎解析js脚本</p> <p>理解事件循环如何运行对于代码优化是重要的，有时对于正确的架构也很重要。</p> <p>事件循环有隐含事件循环、显示事件循环</p> <p>宏任务列队是V8术语</p> <p>队列里的任务执行基于“先进先出”原则。</p> <div class="custom-block tip"><p class="custom-block-title">两个更细节的点：</p> <p>当引擎处理任务时不会执行渲染。如果执行需要很长一段时间也是如此。对于 DOM 的修改只有当任务执行完成才会被绘制。
+如果一个任务执行时间过长，浏览器无法处理其他任务，在一定时间后就会在整个页面抛出一个如“页面未响应”的警示建议终止这个任务。这样的场景经常发生在很多复杂计算或者程序错误执行到死循环里。</p></div> <p>在每个宏任务之后，引擎立即执行所有微任务队列中的任务，比任何其他的宏任务或者渲染或者其他事情都要优先。</p> <p>所有的微任务在任何其他的事件处理或者渲染或者任何其他的宏任务发生之前完成调用。</p> <div class="language-js extra-class"><pre class="language-js"><code>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;first&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;second&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;third&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">trace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+first
+third
+console<span class="token punctuation">.</span><span class="token function">trace</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+second
+</code></pre></div><p>什么？即使我们将setTimeout设置为0秒，它仍然在最后执行。</p> <p>所以，Javascript的异步特性来了。SetTimeOut不属于运行时环境，是浏览器提供的Web Api的一部分。
+<code>stack</code>按顺序获取所有内容，但setTimeOut进入webapi，计时器运行0秒后，而不是将其放回堆栈，而是将其放回回调队列<code>callback queue</code>，然后堆栈继续执行下一个调用。
+一旦堆栈变空，事件循环<code>eventloop</code>就会出现，并获取回调队列中的第一个元素并将其传递给堆栈，从而执行它。</p> <p>使用setTimeout时，JavaScript将在将回调添加到队列之前等待延迟毫秒。那时，如果队列中仍然有以前的消息，那么将首先处理这些消息，并且我们的回调可能会在延迟毫秒之后被调用。因此，延迟不是保证的确切延迟，而是最小延迟。</p> <p>这就是为什么在一个零延迟的函数上设置setTimeout仍然可以确保在当前消息完成之后（实际上，在它之前的队列中的所有其他消息之后）调用该函数。</p> <p>注意-setTimeout不保证在给定时间内执行，而是保证执行的最短时间。</p> <p>所有web Api的工作方式都是一样的。浏览器通过调用XHR来解析任何ajax调用，并将回调传递给队列，但是程序继续执行，一旦堆栈清除，函数就传递给堆栈并继续执行。</p> <p>事件循环 运行一个<code>while</code>循环 同步等待消息，同步处理消息，然后重复执行</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">while</span> <span class="token punctuation">(</span>queue<span class="token punctuation">.</span><span class="token function">waitForMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  queue<span class="token punctuation">.</span><span class="token function">processMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/blog/" class="prev router-link-active">
+        我是博客列表页
+      </a></span> <span class="next"><a href="/blog/" class="router-link-active">
+        我是博客列表页
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.31ad6def.js" defer></script><script src="/assets/js/2.402b875a.js" defer></script><script src="/assets/js/13.5535dce1.js" defer></script>
+  </body>
+</html>

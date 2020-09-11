@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <script src="https://unpkg.com/vue@2.4.2/dist/vue.js"></script>
+</head>
+<body>
+<div class="panel" id="app">
+  <div class="header" v-if="expand">
+    <i @click.stop="expand = false, countA++">Expand is True</i>
+  </div>
+  <div class="expand" v-if="!expand" @click="expand = true, countB++">
+    <i>Expand is False</i>
+  </div>
+  <div>
+    countA: {{countA}}
+  </div>
+  <div>
+    countB: {{countB}}
+  </div>
+  Please Click `Expand is Ture`.
+</div>
+<script>
+"use strict";
+new Vue({
+  el: '#app',
+  data: {
+    expand: true,
+    countA: 0,
+    countB: 0,
+  }
+})
+
+function a(){console.log(this)}
+a();
+</script>
+</body>
+</html>
